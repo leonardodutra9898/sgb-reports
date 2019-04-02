@@ -19,6 +19,10 @@ WHERE
 		<property name="com.jaspersoft.studio.field.label" value="moradia_rural"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
 	</field>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
 	<field name="celulara" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="celulara"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
@@ -79,25 +83,46 @@ WHERE
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="88" splitType="Stretch">
+		<band height="98" splitType="Stretch">
 			<image>
 				<reportElement x="384" y="0" width="170" height="79" uuid="ef16c8a6-097f-44d3-8986-a49814bbe794"/>
 				<imageExpression><![CDATA["C:/Users/Leo/git/sgb-reports/sgb-reports/resources/logo_campus.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="0" y="0" width="280" height="30" uuid="88c5c863-9ce5-4ebd-afb2-0f32cd8c5c73"/>
+				<reportElement x="0" y="22" width="280" height="22" uuid="88c5c863-9ce5-4ebd-afb2-0f32cd8c5c73"/>
 				<textElement>
-					<font fontName="arial" size="18" isBold="true"/>
+					<font fontName="arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Ficha de Inscrição]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="30" width="370" height="30" uuid="9a7845c2-eefd-4b1f-8dc6-d843f58c5015"/>
+				<reportElement x="0" y="44" width="370" height="20" uuid="9a7845c2-eefd-4b1f-8dc6-d843f58c5015"/>
 				<textElement>
 					<font fontName="arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="370" height="22" uuid="4a031b2f-42d7-407f-b876-c71b3ad5b997"/>
+				<textElement>
+					<font fontName="arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sistema de Gestão de Benefícios]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="64" width="180" height="20" uuid="7ba6db8c-c3c5-4e8a-b3fd-5fb755fcc284"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="64" width="120" height="20" uuid="83a4efbe-6a57-47ae-9e35-8b8a1b29cb11"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Código de Inscrição:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
