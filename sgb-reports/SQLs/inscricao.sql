@@ -16,9 +16,9 @@ SELECT
     a.siape, a.situacao_vulnerabilidade_economica, a.telefone_fixo, a.tipo_escola_ensino_medio, a.uso_continuo_medicacao,
     a.valor_assis_medica,
     l.bairro, l.cep, l.nome_rua, l.num_casa, l.referencia, l.tipo_casa, l.tipo_rua, l.complemento, 
-    c.nome, 
-    e.nome, e.sigla, 
-    oe.descricao, oe.sigla, 
+    c.nome as nome_cidade, 
+    e.nome as nome_estado, e.sigla, 
+    oe.descricao as oe_descricao, oe.sigla as oe_sigla, 
     b.cod_banco, b.nome_banco, 
     p.ano, p.data_abertura, p.data_encerramento, p.status_processo, 
     be.meses_concessao, be.descricao, be.nome
@@ -26,7 +26,7 @@ FROM
 	inscricao AS i, aluno AS a, logradouro AS l, cidade AS c, 
 	estado as e, orgao_expedidor AS oe, banco AS b, processo AS p, beneficio as be
 WHERE 
-	i.aluno_id = a.cod_aluno AND a.logradouro_id = l.id AND 
+	i.aluno_id = a.id AND a.logradouro_id = l.id AND 
 	a.cidade_id = c.id AND a.uf_id = e.id 
 	AND a.orgao_expedidorrg_id = oe.id AND i.processo_id = p.id
-	AND b.id = a.banco_id AND i.cod_inscricao = 25 AND be.id = p.beneficio_id
+	AND b.id = a.banco_id AND i.id = 25 AND be.id = p.beneficio_id
