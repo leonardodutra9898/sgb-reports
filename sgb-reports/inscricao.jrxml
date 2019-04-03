@@ -8,6 +8,7 @@
 	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
 	i.id as cod_inscricao, i.acomp_pedag_prae, i.acomp_psi_prae, i.ajuda_custo_evento_cientifico_prae,
@@ -138,11 +139,55 @@ WHERE
 		<property name="com.jaspersoft.studio.field.label" value="rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
 	</field>
+	<field name="naturalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naturalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nacionalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="acomp_pedag_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="acomp_pedag_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="acomp_psi_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="acomp_psi_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="ajuda_custo_evento_cientifico_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ajuda_custo_evento_cientifico_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_creche_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_creche_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_emerg_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_emerg_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_moradia_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_moradia_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="bolsa_desporto_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="bolsa_desporto_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="bolsa_ini_acad_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="bolsa_ini_acad_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="isencaoruprae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="isencaoruprae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="78" splitType="Stretch">
+		<band height="77" splitType="Stretch">
 			<image>
 				<reportElement x="0" y="0" width="281" height="40" uuid="6978c921-b4cf-44e5-8713-1814973ea636"/>
 				<imageExpression><![CDATA["resources/images/tituloReport1.png"]]></imageExpression>
@@ -152,13 +197,13 @@ WHERE
 				<imageExpression><![CDATA["resources/images/logo_campus.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="fontsGeral" x="1" y="41" width="372" height="20" uuid="3b7131a0-eb2c-42de-b17f-ba0d8a442ee6"/>
-				<text><![CDATA[ADMINISTRAÇÃO DE BENEFÍCIOS]]></text>
+				<reportElement style="fontsGeral" x="3" y="40" width="372" height="20" uuid="a95a5a36-079d-4be6-ab1f-50b3751bb036"/>
+				<text><![CDATA[SISTEMA DE GESTÃO DE BENEFÍCIOS [SGB]]]></text>
 			</staticText>
 		</band>
 	</title>
 	<detail>
-		<band height="333" splitType="Stretch">
+		<band height="457" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<rectangle>
 				<reportElement x="-19" y="205" width="199" height="30" backcolor="#4A4A49" uuid="b98cf6ba-7e85-40bd-9ffe-7b4b4ad3fee7"/>
@@ -173,14 +218,14 @@ WHERE
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="26" width="100" height="20" backcolor="#BDAEA4" uuid="83a4efbe-6a57-47ae-9e35-8b8a1b29cb11"/>
+				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="25" width="100" height="20" backcolor="#BDAEA4" uuid="83a4efbe-6a57-47ae-9e35-8b8a1b29cb11"/>
 				<textElement>
 					<font fontName="arial" size="12"/>
 				</textElement>
 				<text><![CDATA[Código do Aluno:]]></text>
 			</staticText>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="100" y="26" width="106" height="20" uuid="7ba6db8c-c3c5-4e8a-b3fd-5fb755fcc284"/>
+				<reportElement stretchType="RelativeToTallestObject" x="100" y="25" width="180" height="20" uuid="7ba6db8c-c3c5-4e8a-b3fd-5fb755fcc284"/>
 				<textElement>
 					<font fontName="arial" size="12"/>
 				</textElement>
@@ -200,11 +245,11 @@ WHERE
 				<text><![CDATA[DADOS PESSOAIS]]></text>
 			</staticText>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="100" y="45" width="179" height="20" uuid="4a97904f-2f47-437a-82b9-8c8b76cedb6b"/>
+				<reportElement stretchType="RelativeToTallestObject" x="100" y="45" width="180" height="20" uuid="4a97904f-2f47-437a-82b9-8c8b76cedb6b"/>
 				<textElement>
 					<font fontName="arial" size="12"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nome_completo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_completo}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="45" width="100" height="20" backcolor="#BDAEA4" uuid="66cc0141-de7c-4d04-9ae2-55be8863cf7f"/>
@@ -215,14 +260,14 @@ WHERE
 			</staticText>
 			<textField>
 				<reportElement style="fontsGeral" x="85" y="65" width="195" height="20" uuid="2ac68e3a-66fe-48fd-b9f3-4dc5b1088aa5"/>
-				<textFieldExpression><![CDATA[$F{nome_social}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_social}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="65" width="80" height="20" backcolor="#BDAEA4" uuid="0932449d-d845-4813-913d-f468c0e28882"/>
 				<text><![CDATA[Nome Social: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="122" y="85" width="100" height="20" uuid="ba01f2b3-7ce3-4928-b76f-51874d1dbb4f"/>
+				<reportElement style="fontsGeral" x="122" y="85" width="158" height="20" uuid="ba01f2b3-7ce3-4928-b76f-51874d1dbb4f"/>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -231,7 +276,7 @@ WHERE
 			</staticText>
 			<textField>
 				<reportElement style="fontsGeral" x="90" y="105" width="190" height="20" uuid="435a22dd-109a-4c5b-a99a-bb58a4846f38"/>
-				<textFieldExpression><![CDATA[$F{nome_mae}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_mae}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="105" width="85" height="20" backcolor="#BDAEA4" uuid="71793b9e-6ace-47f8-b6d4-1e79580e3444"/>
@@ -239,74 +284,70 @@ WHERE
 			</staticText>
 			<textField>
 				<reportElement style="fontsGeral" x="81" y="125" width="199" height="20" uuid="15658c2c-7558-4cb6-ba36-92f7d9b5bd0b"/>
-				<textFieldExpression><![CDATA[$F{nome_pai}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_pai}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="125" width="80" height="20" backcolor="#BDAEA4" uuid="18831f0a-3761-4ca5-a2a2-b9d9b2a43a86"/>
 				<text><![CDATA[Nome do Pai: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="340" y="26" width="140" height="19" uuid="7c28639f-2e7f-43ac-9a2d-57a7bb9c1647"/>
+				<reportElement style="fontsGeral" x="330" y="26" width="167" height="19" uuid="7c28639f-2e7f-43ac-9a2d-57a7bb9c1647"/>
 				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="26" width="36" height="19" uuid="0b432d70-e460-4e17-b091-165191df6294"/>
+				<reportElement style="fontsGeral" x="300" y="26" width="30" height="19" uuid="0b432d70-e460-4e17-b091-165191df6294"/>
 				<text><![CDATA[CPF:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="340" y="46" width="139" height="19" uuid="7ddabf48-b595-43f0-90a9-3e4bdf5ad21e"/>
+				<reportElement style="fontsGeral" x="330" y="45" width="167" height="20" uuid="7ddabf48-b595-43f0-90a9-3e4bdf5ad21e"/>
 				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="46" width="30" height="19" uuid="2250c89d-b337-46a0-b4ca-8f74e724b2f2"/>
+				<reportElement style="fontsGeral" x="300" y="45" width="30" height="20" uuid="2250c89d-b337-46a0-b4ca-8f74e724b2f2"/>
 				<text><![CDATA[RG: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="372" y="65" width="120" height="20" uuid="74331d88-f0c1-4530-8edf-630e36b02a8e"/>
-				<textFieldExpression><![CDATA[$F{estado_civil}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="372" y="65" width="125" height="20" uuid="74331d88-f0c1-4530-8edf-630e36b02a8e"/>
+				<textFieldExpression><![CDATA[$F{estado_civil}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="300" y="65" width="72" height="20" uuid="8f8e85c0-32f9-4996-b06b-07fbbf91f26e"/>
 				<text><![CDATA[Estado Civil:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="400" y="85" width="152" height="20" uuid="17d7a5e9-94d5-4fa7-b9a9-7240f37a9df3"/>
-				<textFieldExpression><![CDATA[$F{oe_descricao}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="300" y="180" width="230" height="27" uuid="17d7a5e9-94d5-4fa7-b9a9-7240f37a9df3"/>
+				<textFieldExpression><![CDATA[$F{oe_descricao}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement style="fontsGeral" x="300" y="85" width="100" height="20" uuid="897ce00a-1b77-4b99-a74b-ae7882172da6"/>
-				<text><![CDATA[Órgão Expedidor: ]]></text>
-			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="338" y="105" width="162" height="20" uuid="2e46088d-a47a-4d39-8437-c9f9b120044d"/>
+				<reportElement style="fontsGeral" x="335" y="85" width="162" height="20" uuid="2e46088d-a47a-4d39-8437-c9f9b120044d"/>
 				<textFieldExpression><![CDATA[$F{cnh}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="105" width="38" height="20" uuid="f2d480dc-61fc-4816-a87d-de37355b693d"/>
+				<reportElement style="fontsGeral" x="300" y="85" width="30" height="20" uuid="f2d480dc-61fc-4816-a87d-de37355b693d"/>
 				<text><![CDATA[CNH: ]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="340" y="125" width="100" height="20" uuid="9a9cf1d7-b5df-4044-9f3d-7ecb0ba68609"/>
-				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="335" y="105" width="162" height="20" uuid="9a9cf1d7-b5df-4044-9f3d-7ecb0ba68609"/>
+				<textFieldExpression><![CDATA[$F{sexo} == "m" ? "MASCULINO" : "FEMININO"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="125" width="40" height="20" uuid="dccd2d83-1ee1-4845-807d-9e841cfeafb1"/>
+				<reportElement style="fontsGeral" x="300" y="105" width="35" height="20" uuid="dccd2d83-1ee1-4845-807d-9e841cfeafb1"/>
 				<text><![CDATA[Sexo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="350" y="145" width="130" height="18" uuid="fa54a6b0-0e9d-4ab6-acbb-77e157769832"/>
-				<textFieldExpression><![CDATA[$F{nome_cidade}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="346" y="125" width="151" height="20" uuid="fa54a6b0-0e9d-4ab6-acbb-77e157769832"/>
+				<textFieldExpression><![CDATA[$F{nome_cidade}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="145" width="50" height="18" uuid="07454aaf-c946-439b-8d39-0ec81c4d1f09"/>
+				<reportElement style="fontsGeral" x="300" y="125" width="45" height="20" uuid="07454aaf-c946-439b-8d39-0ec81c4d1f09"/>
 				<text><![CDATA[Cidade:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="350" y="163" width="100" height="20" uuid="267aad65-1f71-4390-aa43-454ad953bb5e"/>
-				<textFieldExpression><![CDATA[$F{nome_estado}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="345" y="145" width="152" height="18" uuid="267aad65-1f71-4390-aa43-454ad953bb5e"/>
+				<textFieldExpression><![CDATA[$F{nome_estado}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="163" width="54" height="20" uuid="f722f0dc-e905-4072-9dd0-4b8e23038afb"/>
+				<reportElement style="fontsGeral" x="300" y="145" width="40" height="18" uuid="f722f0dc-e905-4072-9dd0-4b8e23038afb"/>
 				<text><![CDATA[Estado:]]></text>
 			</staticText>
 			<staticText>
@@ -335,59 +376,157 @@ WHERE
 				<text><![CDATA[DADOS DA INSCRIÇÃO]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="113" y="240" width="126" height="20" uuid="2cff032c-61a5-4372-9ac3-7fa947420e3a"/>
+				<reportElement style="fontsGeralEnfatico" x="113" y="240" width="144" height="20" uuid="2cff032c-61a5-4372-9ac3-7fa947420e3a"/>
 				<textFieldExpression><![CDATA[$F{cod_inscricao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeral" x="57" y="260" width="200" height="20" uuid="ec83656e-bfed-4456-92d0-865f054b00c1"/>
-				<textFieldExpression><![CDATA[$F{nome_beneficio}]]></textFieldExpression>
+				<reportElement style="fontsGeralEnfatico" x="0" y="280" width="221" height="20" uuid="ec83656e-bfed-4456-92d0-865f054b00c1"/>
+				<textFieldExpression><![CDATA[$F{nome_beneficio}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="260" width="60" height="20" uuid="417b1de2-1d0b-463f-a617-41eed24f37d5"/>
-				<text><![CDATA[Benefício:]]></text>
+				<reportElement style="fontsGeral" x="0" y="260" width="110" height="20" uuid="417b1de2-1d0b-463f-a617-41eed24f37d5"/>
+				<text><![CDATA[Benefício Solicitado:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="60" y="280" width="250" height="20" uuid="69a95491-04cf-4bc5-b7dd-8f322b1bc269"/>
-				<textFieldExpression><![CDATA[$F{descricao_beneficio}]]></textFieldExpression>
+				<reportElement style="fontsGeralEnfatico" x="0" y="320" width="220" height="52" uuid="69a95491-04cf-4bc5-b7dd-8f322b1bc269"/>
+				<textFieldExpression><![CDATA[$F{descricao_beneficio}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="280" width="60" height="20" uuid="5659b273-aef1-45bb-b768-68600ba697ad"/>
+				<reportElement style="fontsGeral" mode="Transparent" x="0" y="300" width="60" height="20" backcolor="#FCE9C5" uuid="5659b273-aef1-45bb-b768-68600ba697ad"/>
 				<text><![CDATA[Descrição: ]]></text>
 			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="80" y="145" width="200" height="18" uuid="3c6c13df-fb34-4227-988e-f1ebfa69e31a"/>
+				<textFieldExpression><![CDATA[$F{naturalidade}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="145" width="80" height="18" uuid="3e8d52a9-24fa-467a-b49d-3a3b8e03a2d3"/>
+				<text><![CDATA[Naturalidade: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="85" y="163" width="195" height="17" uuid="fdbddd40-efdd-47c7-80e9-d2966531feb3"/>
+				<textFieldExpression><![CDATA[$F{nacionalidade}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="163" width="85" height="17" uuid="2ac5e700-2f4f-4f4b-ab49-00b529df0679"/>
+				<text><![CDATA[Nacionalidade: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="418" y="163" width="112" height="17" uuid="f1939b23-d374-4c9b-95c3-1b5e2d000d67"/>
+				<textFieldExpression><![CDATA[$F{oe_sigla}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="163" width="114" height="17" uuid="17dfea0a-4b4d-4174-8be1-6aabdf0c2797"/>
+				<text><![CDATA[Órgão Expedidor RG: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="240" width="44" height="20" uuid="47b660c5-794f-4128-b854-16b32bced781"/>
+				<textFieldExpression><![CDATA[$F{acomp_pedag_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="240" width="250" height="20" uuid="9388d46d-ef95-4964-a064-81d459a1c601"/>
+				<text><![CDATA[Possui acompanhamento pedagógico (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="260" width="44" height="20" uuid="72190bd1-d293-4997-b6a5-9a0341548e9e"/>
+				<textFieldExpression><![CDATA[$F{acomp_psi_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="260" width="250" height="20" uuid="05e529d0-0759-4103-ab82-cb367eab5e71"/>
+				<text><![CDATA[Possui acompanhamento psicológico (PRAE):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="280" width="250" height="30" uuid="39a08abd-3417-4e56-b911-d5a8a4fd5df6"/>
+				<text><![CDATA[Possui ajuda de custo em eventos científicos(PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="280" width="44" height="30" uuid="08d5021a-e4b0-4b18-90aa-f425edffb436"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ajuda_custo_evento_cientifico_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="312" width="250" height="20" uuid="a554aaf0-0ee3-4564-a986-22f29c30e036"/>
+				<text><![CDATA[Possui auxílio creche (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="312" width="44" height="20" uuid="8c0059e9-ba59-4145-b2fa-4a041d06d674"/>
+				<textFieldExpression><![CDATA[$F{aux_creche_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="332" width="250" height="20" uuid="5a6ee209-19f9-4706-91d6-ac6c27ec97f6"/>
+				<text><![CDATA[Possui auxílio emergencial (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="332" width="44" height="20" uuid="31d34d9f-b942-4af6-b2c7-aec22b8d44f4"/>
+				<textFieldExpression><![CDATA[$F{aux_emerg_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="352" width="250" height="20" uuid="0887260f-7240-4581-b684-e8e50a4b5e5d"/>
+				<text><![CDATA[Possui auxílio moradia (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="352" width="44" height="20" uuid="acae2c79-ba41-452d-a510-a99b7d8f1829"/>
+				<textFieldExpression><![CDATA[$F{aux_moradia_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="372" width="250" height="20" uuid="ebc06557-2583-4d92-8e2f-31ae8f207ba1"/>
+				<text><![CDATA[Possui bolsa desporto (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="372" width="44" height="20" uuid="7eec3ce2-e80e-4ba1-87b9-9a394069c301"/>
+				<textFieldExpression><![CDATA[$F{bolsa_desporto_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="392" width="250" height="20" uuid="65130a5a-8b85-4b0d-8c99-5c41dfdd0ab9"/>
+				<text><![CDATA[Possui bolsa de iniciação acadêmica (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="392" width="44" height="20" uuid="1d4f40e5-c61b-4e0f-a9ac-04082e928767"/>
+				<textFieldExpression><![CDATA[$F{bolsa_ini_acad_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="412" width="250" height="20" uuid="53ea3487-7c1a-4ea8-a494-ecaf575c59cb"/>
+				<text><![CDATA[Possui isenção no RU (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="412" width="44" height="20" uuid="2c4dd8f2-fca4-4dc4-97bb-7d6a8d014d9e"/>
+				<textFieldExpression><![CDATA[$F{isencaoruprae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<pageFooter>
 		<band height="77" splitType="Stretch">
-			<textField>
-				<reportElement style="fontsGeral" x="110" y="30" width="100" height="21" uuid="f2eae250-6629-4664-ba30-e9829b475eda"/>
-				<textFieldExpression><![CDATA[$F{cod_inscricao}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="30" width="110" height="21" uuid="7b779e30-4d61-40cd-a1bd-08f3db4cfbf3"/>
-				<text><![CDATA[Ficha de Inscrição #]]></text>
+				<reportElement style="fontsGeral" x="0" y="20" width="240" height="19" uuid="7b779e30-4d61-40cd-a1bd-08f3db4cfbf3"/>
+				<text><![CDATA[KM 3, Bairro dos Venâncios, SN]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="0" y="52" width="230" height="19" uuid="f16fe8d5-7ddf-4754-a6dc-6e9aeb9db6e3"/>
-				<textFieldExpression><![CDATA[$F{nome_beneficio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="fontsGeral" x="530" y="10" width="24" height="18" uuid="ba88dfd9-4663-44d8-a247-e7e74005f765"/>
-				<textElement textAlignment="Right"/>
+				<reportElement style="fontsGeral" x="531" y="59" width="24" height="18" uuid="ba88dfd9-4663-44d8-a247-e7e74005f765"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="480" y="9" width="50" height="18" uuid="b2fe98df-2dd9-41f0-9f30-a6ea9609d481"/>
+				<reportElement style="fontsGeral" x="481" y="59" width="50" height="18" uuid="b2fe98df-2dd9-41f0-9f30-a6ea9609d481"/>
 				<textElement textAlignment="Right"/>
-				<text><![CDATA[Página ]]></text>
+				<text><![CDATA[Página]]></text>
 			</staticText>
 			<textField pattern="dd/MMMMM/yyyy">
-				<reportElement style="fontsGeral" x="373" y="29" width="180" height="20" uuid="f46640d8-ba71-48af-b211-af0188d46da7"/>
+				<reportElement style="fontsGeral" x="443" y="20" width="112" height="20" uuid="f46640d8-ba71-48af-b211-af0188d46da7"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="9" width="282" height="21" uuid="eb62a9a8-9a7e-45ce-b559-211ae24b47ce"/>
-				<text><![CDATA[Sistema de Gestão de Benefícios]]></text>
+				<reportElement style="fontsGeral" x="0" y="1" width="282" height="19" uuid="eb62a9a8-9a7e-45ce-b559-211ae24b47ce"/>
+				<text><![CDATA[Universidade Federal do Ceará / Campus de Crateús]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="39" width="240" height="18" uuid="a56f5a41-0bf6-458e-a3b6-88850d5018b8"/>
+				<text><![CDATA[http://crateus.ufc.br]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="463" y="0" width="92" height="20" uuid="8669a710-1d8b-4938-9ea0-1df883b49515"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Data Impressão]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
