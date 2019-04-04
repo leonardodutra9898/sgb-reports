@@ -11,6 +11,7 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
 	i.id as cod_inscricao, i.acomp_pedag_prae, i.acomp_psi_prae, i.ajuda_custo_evento_cientifico_prae,
@@ -45,7 +46,7 @@ WHERE
 	i.aluno_id = a.id AND a.logradouro_id = l.id AND 
 	a.cidade_id = c.id AND a.uf_id = e.id 
 	AND a.orgao_expedidorrg_id = oe.id AND i.processo_id = p.id
-	AND b.id = a.banco_id AND i.id = 25 AND be.id = p.beneficio_id 
+	AND b.id = a.banco_id AND i.id = $P{inscricao} AND be.id = p.beneficio_id 
 	AND da.aluno_id = a.id 
 ORDER BY da.id DESC]]>
 	</queryString>
@@ -574,7 +575,7 @@ ORDER BY da.id DESC]]>
 			</staticText>
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="340" y="504" width="214" height="20" uuid="2b8c1dab-032a-42b2-9515-2807e0fc7dd0"/>
-				<textFieldExpression><![CDATA[$F{curso} == "SI" ? "SISTEMAS DE INFORMAÇÃO" : "CIÊNCIAS DA COMPUTAÇÃO"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{curso} == "CC" ? "CIÊNCIAS DA COMPUTAÇÃO" : "SISTEMAS DE INFORMAÇÃO"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="297" y="524" width="113" height="20" uuid="15fde1aa-75a0-4516-8b94-a40ec9b942c4"/>
