@@ -2,7 +2,6 @@
 <!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inscricaoMain" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="605f4a37-d43e-4a61-88e2-a81eefd553d0">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.adapter" value="resources\dataAdapter\sgb.xml"/>
 	<property name="com.jaspersoft.studio.report.description" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
 	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
@@ -869,12 +868,19 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[asdfasdfa asdfasfsa]]></text>
 			</staticText>
 		</band>
-		<band height="160">
+		<band height="122">
 			<subreport>
-				<reportElement x="0" y="0" width="555" height="160" uuid="39435b66-3069-4884-bde2-c240e0b7bae0"/>
+				<reportElement x="0" y="0" width="555" height="20" uuid="39435b66-3069-4884-bde2-c240e0b7bae0"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/Admin/git/sgb-reports/sgb-reports/Blank_A4.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA["/Blank_A4.jasper"]]></subreportExpression>
 			</subreport>
+			<staticText>
+				<reportElement x="150" y="30" width="279" height="48" uuid="7b7bfdc5-34f5-48c6-99be-623d124e67b2"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
