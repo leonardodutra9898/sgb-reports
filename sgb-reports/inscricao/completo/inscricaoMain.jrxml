@@ -869,13 +869,6 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[asdfasdfa asdfasfsa]]></text>
 			</staticText>
 		</band>
-		<band height="160">
-			<subreport>
-				<reportElement x="0" y="0" width="555" height="160" uuid="39435b66-3069-4884-bde2-c240e0b7bae0"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/Admin/git/sgb-reports/sgb-reports/Blank_A4.jasper"]]></subreportExpression>
-			</subreport>
-		</band>
 	</detail>
 	<pageFooter>
 		<band height="82" splitType="Stretch">
