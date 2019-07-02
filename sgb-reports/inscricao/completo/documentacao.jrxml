@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<queryString>
+		<![CDATA[SELECT * FROM documentacao as d, documentacao_arquivos as da WHERE d.id = da.documentacao_id AND inscricao_id = 4]]>
+	</queryString>
+	<field name="descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="documento_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="documento_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="data_postagem" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_postagem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="situacao_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="situacao_documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="39">
+			<rectangle>
+				<reportElement x="-19" y="5" width="139" height="30" backcolor="#4A4A49" uuid="f9c314e0-ea58-42b6-8d4c-499659757dea"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="3" width="141" height="30" backcolor="#FFBA00" uuid="16a16107-2ef0-4444-96c7-de0b0976497e"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="10" width="108" height="16" uuid="9a3b3e41-4709-400a-9f0e-aa273e0e2ce5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTAÇÃO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="134" y="18" width="445" height="13" uuid="d85b549e-f858-4d45-b886-d61e3cc29d2a"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="68" width="90" height="20" uuid="4028e7c8-6d0b-430d-b229-d3458d4b4f74"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Entrega:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="47" width="70" height="20" uuid="f4339af7-c0cf-4b8b-91ab-9e4ef7b53aee"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="7" width="555" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
+				<textElement>
+					<font fontName="Tahoma" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{documento}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeral" x="91" y="68" width="150" height="20" uuid="11eeeb5a-1af2-4a15-869f-cb5f126680ef"/>
+				<textFieldExpression><![CDATA[$F{data_postagem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeral" x="0" y="27" width="240" height="20" uuid="73a07d02-2578-445d-a8d4-639963c2bd37"/>
+				<textFieldExpression><![CDATA[$F{documento_tipo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="94" width="555" height="1" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
+			</line>
+			<textField>
+				<reportElement style="fontsGeral" x="70" y="47" width="484" height="20" uuid="bca87346-7479-4694-9ce5-e14d58c1ec0b"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
