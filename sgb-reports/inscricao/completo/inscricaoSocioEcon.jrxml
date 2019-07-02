@@ -105,11 +105,6 @@ WHERE
 			</staticText>
 			<frame>
 				<reportElement x="1" y="121" width="549" height="179" uuid="e376dda6-7b00-440b-ab38-e4bb9f7215a0"/>
-				<subreport>
-					<reportElement x="0" y="0" width="549" height="200" uuid="bfb81c47-4115-4a1d-a6a3-800ec4b5c10f"/>
-					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					<subreportExpression><![CDATA["Blank_A4.jasper"]]></subreportExpression>
-				</subreport>
 			</frame>
 		</band>
 	</detail>

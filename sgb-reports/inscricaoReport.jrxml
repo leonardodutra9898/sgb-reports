@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="inscricao" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5259b66-6fe9-4353-a219-5416d9f6d9a7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="191"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="804"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="796"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="194"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+	i.id as cod_inscricao, i.acomp_pedag_prae, i.acomp_psi_prae, i.ajuda_custo_evento_cientifico_prae,
+    i.aux_creche_prae, i.aux_emerg_prae, i.aux_moradia_prae, i.bolsa_desporto_prae, i.bolsa_ini_acad_prae,
+    i.bolsista, i.cargo, i.data_hora_inscricao, i.declaracao_veracidade, i.empresa, i.estagiario, i.isencaoruprae,
+    i.meio_transporte, i.moradia_rural, i.onde_faz_estagio, i.relato_familiar, i.renda_mensal, i.situacao,
+    i.situacao_moradia_imovel, i.tempo_gasto_deslocamento, i.tipo_bolsa, i.tipo_moradia, i.trabalha_formalmente,
+    i.valor_gasto_diariamente_transporte, i.valor_mensal_financiamento,
+    a.id as cod_aluno, a.ano_conclusao, a.bolsista_escola_particular, a.celulara, a.celularb, a.cidade_agencia,
+    a.cnh, a.conta_corrente, a.cpf, a.curso_outra_graduacao, a.data_nascimento, a.deficiencia, a.deficiencia_membro_familiar,
+    a.doenca, a.doenca_grave_membro_familiar, a.email, a.estado_civil, a.familia_possui_plano_assis_medica,
+    a.forma_ingresso, a.idade_filho_mais_novo, a.ies, a.mae_viuva, a.matricula_atual, a.nacionalidade,
+    a.naturalidade, a.nome_completo, a.nome_mae, a.nome_pai, a.nome_social, a.num_agencia, a.num_filhos,
+    a.operador_cef, a.outra_forma_ingresso, a.outra_graduacao, a.pai_viuvo, a.percentual_bolsa,
+    a.possue_guarda_filho, a.possui_deficiencia, a.qual_deficiencia_membro_familiar, 
+    a.qual_doenca_grave_membro_familiar, a.quantas_pessoas_familia, a.renda_familiar, a.renda_mensal, a.rg, a.sexo,
+    a.siape, a.situacao_vulnerabilidade_economica, a.telefone_fixo, a.tipo_escola_ensino_medio, a.uso_continuo_medicacao,
+    a.valor_assis_medica,
+    l.bairro, l.cep, l.nome_rua, l.num_casa, l.referencia, l.tipo_casa, l.tipo_rua, l.complemento, 
+    c.nome as nome_cidade, 
+    e.nome as nome_estado, e.sigla, 
+    oe.descricao as oe_descricao, oe.sigla as oe_sigla, 
+    b.cod_banco, b.nome_banco, 
+    p.ano, p.data_abertura, p.data_encerramento, p.status_processo, 
+    be.meses_concessao, be.descricao as descricao_beneficio, be.nome as nome_beneficio,
+    da.semestre_cursando, da.status, da.curso
+FROM 
+	inscricao AS i, aluno AS a, logradouro AS l, cidade AS c, 
+	estado AS e, orgao_expedidor AS oe, banco AS b, processo AS p, beneficio AS be,
+	dados_academicos AS da
+WHERE 
+	i.aluno_id = a.id AND a.logradouro_id = l.id AND 
+	a.cidade_id = c.id AND a.uf_id = e.id 
+	AND a.orgao_expedidorrg_id = oe.id AND i.processo_id = p.id
+	AND b.id = a.banco_id AND i.id = $P{inscricao} AND be.id = p.beneficio_id 
+	AND da.aluno_id = a.id 
+ORDER BY da.id DESC]]>
+	</queryString>
+	<field name="nome_beneficio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_beneficio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="beneficio"/>
+	</field>
+	<field name="descricao_beneficio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descricao_beneficio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="beneficio"/>
+	</field>
+	<field name="meses_concessao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="meses_concessao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="beneficio"/>
+	</field>
+	<field name="cod_inscricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cod_inscricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="moradia_rural" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="moradia_rural"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="cod_aluno" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cod_aluno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="celulara" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="celulara"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="celularb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="celularb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="data_nascimento" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="data_nascimento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sexo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_completo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_completo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="siape" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="siape"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="cnh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cnh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="estado_civil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estado_civil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_mae" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_mae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_pai" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_pai"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nome_social" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_social"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="oe_descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="oe_descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="oe_sigla" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="oe_sigla"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="naturalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naturalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="nacionalidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="telefone_fixo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="telefone_fixo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="acomp_pedag_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="acomp_pedag_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="acomp_psi_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="acomp_psi_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="ajuda_custo_evento_cientifico_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="ajuda_custo_evento_cientifico_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_creche_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_creche_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_emerg_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_emerg_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="aux_moradia_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="aux_moradia_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="bolsa_desporto_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="bolsa_desporto_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="bolsa_ini_acad_prae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="bolsa_ini_acad_prae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="isencaoruprae" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="isencaoruprae"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="inscricao"/>
+	</field>
+	<field name="curso" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="curso"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<field name="semestre_cursando" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="semestre_cursando"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="281" height="40" uuid="6978c921-b4cf-44e5-8713-1814973ea636"/>
+				<imageExpression><![CDATA["resources/images/tituloReport1.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="384" y="0" width="170" height="49" uuid="ef16c8a6-097f-44d3-8986-a49814bbe794"/>
+				<imageExpression><![CDATA["resources/images/logo_campus.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="fontsGeral" x="3" y="40" width="372" height="20" uuid="a95a5a36-079d-4be6-ab1f-50b3751bb036"/>
+				<text><![CDATA[SISTEMA DE GESTÃO DE BENEFÍCIOS [SGB]]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="618" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<rectangle>
+				<reportElement x="-19" y="219" width="199" height="30" backcolor="#4A4A49" uuid="b98cf6ba-7e85-40bd-9ffe-7b4b4ad3fee7"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-19" y="-2" width="199" height="30" backcolor="#4A4A49" uuid="9d3acfb0-22f7-49c7-be75-50eade4631ed"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" mode="Transparent" x="0" y="39" width="100" height="20" backcolor="#BDAEA4" uuid="83a4efbe-6a57-47ae-9e35-8b8a1b29cb11"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Código do Aluno:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" stretchType="RelativeToTallestObject" x="100" y="39" width="180" height="20" uuid="7ba6db8c-c3c5-4e8a-b3fd-5fb755fcc284"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_aluno}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-20" y="-4" width="199" height="30" backcolor="#FFBA00" uuid="a12ac011-d7a0-472a-9727-3d501699a042"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="3" width="126" height="16" uuid="103233ec-df32-4b9e-9ca8-7ec6afcfe615"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DADOS PESSOAIS]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" stretchType="RelativeToTallestObject" x="100" y="59" width="180" height="20" uuid="4a97904f-2f47-437a-82b9-8c8b76cedb6b"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_completo}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="59" width="100" height="20" backcolor="#BDAEA4" uuid="66cc0141-de7c-4d04-9ae2-55be8863cf7f"/>
+				<textElement>
+					<font fontName="arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Nome Completo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="85" y="79" width="195" height="20" uuid="2ac68e3a-66fe-48fd-b9f3-4dc5b1088aa5"/>
+				<textFieldExpression><![CDATA[$F{nome_social}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="79" width="80" height="20" backcolor="#BDAEA4" uuid="0932449d-d845-4813-913d-f468c0e28882"/>
+				<text><![CDATA[Nome Social: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="122" y="99" width="158" height="20" uuid="ba01f2b3-7ce3-4928-b76f-51874d1dbb4f"/>
+				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="99" width="120" height="20" backcolor="#BDAEA4" uuid="f4544413-cf74-4bec-8350-b174ddb94a6c"/>
+				<text><![CDATA[Data de Nascimento: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="90" y="119" width="190" height="20" uuid="435a22dd-109a-4c5b-a99a-bb58a4846f38"/>
+				<textFieldExpression><![CDATA[$F{nome_mae}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="119" width="85" height="20" backcolor="#BDAEA4" uuid="71793b9e-6ace-47f8-b6d4-1e79580e3444"/>
+				<text><![CDATA[Nome da Mãe: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="81" y="139" width="199" height="20" uuid="15658c2c-7558-4cb6-ba36-92f7d9b5bd0b"/>
+				<textFieldExpression><![CDATA[$F{nome_pai}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="139" width="80" height="20" backcolor="#BDAEA4" uuid="18831f0a-3761-4ca5-a2a2-b9d9b2a43a86"/>
+				<text><![CDATA[Nome do Pai: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="330" y="40" width="167" height="19" uuid="7c28639f-2e7f-43ac-9a2d-57a7bb9c1647"/>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="40" width="30" height="19" uuid="0b432d70-e460-4e17-b091-165191df6294"/>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="330" y="59" width="167" height="20" uuid="7ddabf48-b595-43f0-90a9-3e4bdf5ad21e"/>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="59" width="30" height="20" uuid="2250c89d-b337-46a0-b4ca-8f74e724b2f2"/>
+				<text><![CDATA[RG: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="372" y="79" width="125" height="20" uuid="74331d88-f0c1-4530-8edf-630e36b02a8e"/>
+				<textFieldExpression><![CDATA[$F{estado_civil}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="79" width="72" height="20" uuid="8f8e85c0-32f9-4996-b06b-07fbbf91f26e"/>
+				<text><![CDATA[Estado Civil:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="300" y="194" width="230" height="27" uuid="17d7a5e9-94d5-4fa7-b9a9-7240f37a9df3"/>
+				<textFieldExpression><![CDATA[$F{oe_descricao}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="335" y="99" width="162" height="20" uuid="2e46088d-a47a-4d39-8437-c9f9b120044d"/>
+				<textFieldExpression><![CDATA[$F{cnh}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="99" width="30" height="20" uuid="f2d480dc-61fc-4816-a87d-de37355b693d"/>
+				<text><![CDATA[CNH: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="335" y="119" width="162" height="20" uuid="9a9cf1d7-b5df-4044-9f3d-7ecb0ba68609"/>
+				<textFieldExpression><![CDATA[$F{sexo} == "m" ? "MASCULINO" : "FEMININO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="119" width="35" height="20" uuid="dccd2d83-1ee1-4845-807d-9e841cfeafb1"/>
+				<text><![CDATA[Sexo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="346" y="139" width="151" height="20" uuid="fa54a6b0-0e9d-4ab6-acbb-77e157769832"/>
+				<textFieldExpression><![CDATA[$F{nome_cidade}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="139" width="45" height="20" uuid="07454aaf-c946-439b-8d39-0ec81c4d1f09"/>
+				<text><![CDATA[Cidade:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="345" y="159" width="152" height="18" uuid="267aad65-1f71-4390-aa43-454ad953bb5e"/>
+				<textFieldExpression><![CDATA[$F{nome_estado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="159" width="40" height="18" uuid="f722f0dc-e905-4072-9dd0-4b8e23038afb"/>
+				<text><![CDATA[Estado:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="256" width="111" height="20" uuid="5680536e-c63c-419e-823a-ddca3f4d6c45"/>
+				<text><![CDATA[Código de Inscrição:]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-20" y="217" width="199" height="30" backcolor="#FFBA00" uuid="0aad0845-f4e8-4e0e-9214-6537c44f67e5"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="1" y="224" width="169" height="16" uuid="f0541303-1200-4880-b5ed-f96dccab229f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DADOS DA INSCRIÇÃO]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="113" y="256" width="144" height="20" uuid="2cff032c-61a5-4372-9ac3-7fa947420e3a"/>
+				<textFieldExpression><![CDATA[$F{cod_inscricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="296" width="221" height="20" uuid="ec83656e-bfed-4456-92d0-865f054b00c1"/>
+				<textFieldExpression><![CDATA[$F{nome_beneficio}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="276" width="110" height="20" uuid="417b1de2-1d0b-463f-a617-41eed24f37d5"/>
+				<text><![CDATA[Benefício Solicitado:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="336" width="220" height="52" uuid="69a95491-04cf-4bc5-b7dd-8f322b1bc269"/>
+				<textFieldExpression><![CDATA[$F{descricao_beneficio}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" mode="Transparent" x="0" y="316" width="60" height="20" backcolor="#FCE9C5" uuid="5659b273-aef1-45bb-b768-68600ba697ad"/>
+				<text><![CDATA[Descrição: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="80" y="159" width="200" height="18" uuid="3c6c13df-fb34-4227-988e-f1ebfa69e31a"/>
+				<textFieldExpression><![CDATA[$F{naturalidade}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="159" width="80" height="18" uuid="3e8d52a9-24fa-467a-b49d-3a3b8e03a2d3"/>
+				<text><![CDATA[Naturalidade: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="85" y="177" width="195" height="17" uuid="fdbddd40-efdd-47c7-80e9-d2966531feb3"/>
+				<textFieldExpression><![CDATA[$F{nacionalidade}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="177" width="85" height="17" uuid="2ac5e700-2f4f-4f4b-ab49-00b529df0679"/>
+				<text><![CDATA[Nacionalidade: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="418" y="177" width="112" height="17" uuid="f1939b23-d374-4c9b-95c3-1b5e2d000d67"/>
+				<textFieldExpression><![CDATA[$F{oe_sigla}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="300" y="177" width="114" height="17" uuid="17dfea0a-4b4d-4174-8be1-6aabdf0c2797"/>
+				<text><![CDATA[Órgão Expedidor RG: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="254" width="44" height="20" uuid="47b660c5-794f-4128-b854-16b32bced781"/>
+				<textFieldExpression><![CDATA[$F{acomp_pedag_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="254" width="250" height="20" uuid="9388d46d-ef95-4964-a064-81d459a1c601"/>
+				<text><![CDATA[Possui acompanhamento pedagógico (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="274" width="44" height="20" uuid="72190bd1-d293-4997-b6a5-9a0341548e9e"/>
+				<textFieldExpression><![CDATA[$F{acomp_psi_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="274" width="250" height="20" uuid="05e529d0-0759-4103-ab82-cb367eab5e71"/>
+				<text><![CDATA[Possui acompanhamento psicológico (PRAE):]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="294" width="250" height="30" uuid="39a08abd-3417-4e56-b911-d5a8a4fd5df6"/>
+				<text><![CDATA[Possui ajuda de custo em eventos científicos(PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="294" width="44" height="30" uuid="08d5021a-e4b0-4b18-90aa-f425edffb436"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ajuda_custo_evento_cientifico_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="326" width="250" height="20" uuid="a554aaf0-0ee3-4564-a986-22f29c30e036"/>
+				<text><![CDATA[Possui auxílio creche (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="326" width="44" height="20" uuid="8c0059e9-ba59-4145-b2fa-4a041d06d674"/>
+				<textFieldExpression><![CDATA[$F{aux_creche_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="346" width="250" height="20" uuid="5a6ee209-19f9-4706-91d6-ac6c27ec97f6"/>
+				<text><![CDATA[Possui auxílio emergencial (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="346" width="44" height="20" uuid="31d34d9f-b942-4af6-b2c7-aec22b8d44f4"/>
+				<textFieldExpression><![CDATA[$F{aux_emerg_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="366" width="250" height="20" uuid="0887260f-7240-4581-b684-e8e50a4b5e5d"/>
+				<text><![CDATA[Possui auxílio moradia (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="366" width="44" height="20" uuid="acae2c79-ba41-452d-a510-a99b7d8f1829"/>
+				<textFieldExpression><![CDATA[$F{aux_moradia_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="386" width="250" height="20" uuid="ebc06557-2583-4d92-8e2f-31ae8f207ba1"/>
+				<text><![CDATA[Possui bolsa desporto (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="386" width="44" height="20" uuid="7eec3ce2-e80e-4ba1-87b9-9a394069c301"/>
+				<textFieldExpression><![CDATA[$F{bolsa_desporto_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="406" width="250" height="20" uuid="65130a5a-8b85-4b0d-8c99-5c41dfdd0ab9"/>
+				<text><![CDATA[Possui bolsa de iniciação acadêmica (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="406" width="44" height="20" uuid="1d4f40e5-c61b-4e0f-a9ac-04082e928767"/>
+				<textFieldExpression><![CDATA[$F{bolsa_ini_acad_prae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="260" y="426" width="250" height="20" uuid="53ea3487-7c1a-4ea8-a494-ecaf575c59cb"/>
+				<text><![CDATA[Possui isenção no RU (PRAE):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="510" y="426" width="44" height="20" uuid="2c4dd8f2-fca4-4dc4-97bb-7d6a8d014d9e"/>
+				<textFieldExpression><![CDATA[$F{isencaoruprae} ? "( X )" : "(  )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="504" width="40" height="20" uuid="ed20fe85-1e4b-4a0b-bd3f-37db9d78ef4f"/>
+				<text><![CDATA[E-mail:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="43" y="504" width="229" height="20" uuid="3be41fde-01e5-4afd-912d-8849155255f3"/>
+				<textFieldExpression><![CDATA[$F{email}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="471" width="169" height="16" uuid="6e3efd99-e646-4f02-bef1-d48e81d4ba8b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DADOS DA INSCRIÇÃO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-19" y="466" width="290" height="30" backcolor="#4A4A49" uuid="eb114657-90ec-4f58-abd5-f697bee5ffee"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="464" width="290" height="30" backcolor="#FFBA00" uuid="ec09bfcc-7131-4009-8899-d98f0c44a50b"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="471" width="260" height="16" uuid="3d293d96-1e47-46c4-992f-6d4615227bd9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[INFORMAÇÕES ACADÊMICAS E CONTATOS]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="58" y="524" width="214" height="20" uuid="55cc6f88-015d-455f-854d-ac35484f76ca"/>
+				<textFieldExpression><![CDATA[$F{siape}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="524" width="60" height="20" uuid="df585a2b-a838-409f-9102-3bc188bf45f8"/>
+				<text><![CDATA[Matrícula:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="58" y="544" width="214" height="20" uuid="98e576fb-ad3d-4388-b80e-1c307c831869"/>
+				<textFieldExpression><![CDATA[$F{celulara}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="544" width="58" height="20" uuid="80869eab-52c1-438a-afc4-5870989432b8"/>
+				<text><![CDATA[Celular 1:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="58" y="564" width="214" height="20" uuid="3211f955-880e-4479-82b9-0c94437b1078"/>
+				<textFieldExpression><![CDATA[$F{celularb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="564" width="58" height="20" uuid="0a83d19b-7f07-4355-8887-b8f44ea93d1c"/>
+				<text><![CDATA[Celular 2:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="80" y="584" width="214" height="20" uuid="b0047ae8-d710-4452-b290-4275d44277a6"/>
+				<textFieldExpression><![CDATA[$F{telefone_fixo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="584" width="80" height="20" uuid="8b572c2d-cf22-4837-9ced-e026ad2b3873"/>
+				<text><![CDATA[Telefone Fixo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="297" y="504" width="40" height="20" uuid="4ba3e7b5-8556-4423-987b-a23e17ee70f2"/>
+				<text><![CDATA[Curso:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="340" y="504" width="214" height="20" uuid="2b8c1dab-032a-42b2-9515-2807e0fc7dd0"/>
+				<textFieldExpression><![CDATA[$F{curso} == "CC" ? "CIÊNCIAS DA COMPUTAÇÃO" : "SISTEMAS DE INFORMAÇÃO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="297" y="524" width="113" height="20" uuid="15fde1aa-75a0-4516-8b94-a40ec9b942c4"/>
+				<text><![CDATA[Semestre em curso:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="410" y="524" width="45" height="20" uuid="ee67417d-6133-4149-94b6-800d5906c16b"/>
+				<textFieldExpression><![CDATA[$F{semestre_cursando}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="190" y="9" width="385" height="4" uuid="9229670a-3a77-4b5a-b9c2-815aeeb064b9"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="190" y="232" width="385" height="4" uuid="33b5a376-bd75-44d8-9210-418d2e4bc2e4"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="282" y="479" width="385" height="4" uuid="ae547efc-fc5b-4bbc-ba59-c7ba69f18aa9"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="64" splitType="Stretch">
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="26" width="240" height="19" uuid="7b779e30-4d61-40cd-a1bd-08f3db4cfbf3"/>
+				<text><![CDATA[KM 3, Bairro dos Venâncios, SN]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="531" y="46" width="24" height="18" uuid="ba88dfd9-4663-44d8-a247-e7e74005f765"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="481" y="46" width="50" height="18" uuid="b2fe98df-2dd9-41f0-9f30-a6ea9609d481"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Página]]></text>
+			</staticText>
+			<textField pattern="dd/MMMMM/yyyy">
+				<reportElement style="fontsGeral" x="443" y="26" width="112" height="20" uuid="f46640d8-ba71-48af-b211-af0188d46da7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="7" width="282" height="19" uuid="eb62a9a8-9a7e-45ce-b559-211ae24b47ce"/>
+				<text><![CDATA[Universidade Federal do Ceará / Campus de Crateús]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="45" width="240" height="18" uuid="a56f5a41-0bf6-458e-a3b6-88850d5018b8"/>
+				<text><![CDATA[http://crateus.ufc.br]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="463" y="6" width="92" height="20" uuid="8669a710-1d8b-4938-9ea0-1df883b49515"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Data Impressão]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="-2" width="555" height="4" uuid="c5862811-fd14-408f-abe7-b669fe2bdfd7"/>
+				<imageExpression><![CDATA["resources/images/line2.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

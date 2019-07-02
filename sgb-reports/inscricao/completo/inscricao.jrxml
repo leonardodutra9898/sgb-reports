@@ -19,14 +19,14 @@
     a.id as cod_aluno, a.ano_conclusao, a.bolsista_escola_particular, a.celulara, a.celularb, a.cidade_agencia,
     a.cnh, a.conta_corrente, a.cpf, a.curso_outra_graduacao, a.data_nascimento, a.deficiencia, a.deficiencia_membro_familiar,
     a.doenca, a.doenca_grave_membro_familiar, a.email, a.estado_civil, a.familia_possui_plano_assis_medica,
-    a.forma_ingresso, a.idade_filho_mais_novo, a.ies, a.mae_viuva, a.matricula_atual, a.nacionalidade,
+    a.forma_ingresso, a.idade_filho_mais_novo, a.ies, a.mae_viuva, a.nacionalidade,
     a.naturalidade, a.nome_completo, a.nome_mae, a.nome_pai, a.nome_social, a.num_agencia, a.num_filhos,
     a.operador_cef, a.outra_forma_ingresso, a.outra_graduacao, a.pai_viuvo, a.percentual_bolsa,
     a.possue_guarda_filho, a.possui_deficiencia, a.qual_deficiencia_membro_familiar, 
-    a.qual_doenca_grave_membro_familiar, a.quantas_pessoas_familia, a.renda_familiar, a.renda_mensal, a.rg, a.sexo,
+    a.qual_doenca_grave_membro_familiar, a.quantas_pessoas_familia, a.renda_familiar, a.rg, a.sexo,
     a.siape, a.situacao_vulnerabilidade_economica, a.telefone_fixo, a.tipo_escola_ensino_medio, a.uso_continuo_medicacao,
     a.valor_assis_medica,
-    l.bairro, l.cep, l.nome_rua, l.num_casa, l.referencia, l.tipo_casa, l.tipo_rua, l.complemento, 
+    l.bairro, l.cep, l.nome_rua, l.num_casa, l.referencia, l.tipo_casa, l.complemento, 
     c.nome as nome_cidade, 
     e.nome as nome_estado, e.sigla, 
     oe.descricao as oe_descricao, oe.sigla as oe_sigla, 
@@ -42,7 +42,7 @@ WHERE
 	i.aluno_id = a.id AND a.logradouro_id = l.id AND 
 	a.cidade_id = c.id AND a.uf_id = e.id 
 	AND a.orgao_expedidorrg_id = oe.id AND i.processo_id = p.id
-	AND b.id = a.banco_id AND i.id = 25 AND be.id = p.beneficio_id 
+	AND b.id = a.banco_id AND i.id = 4 AND be.id = p.beneficio_id 
 	AND da.aluno_id = a.id 
 ORDER BY da.id DESC]]>
 	</queryString>
@@ -250,10 +250,6 @@ ORDER BY da.id DESC]]>
 		<property name="com.jaspersoft.studio.field.label" value="mae_viuva"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
 	</field>
-	<field name="matricula_atual" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="matricula_atual"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
-	</field>
 	<field name="nacionalidade" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nacionalidade"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
@@ -390,10 +386,6 @@ ORDER BY da.id DESC]]>
 		<property name="com.jaspersoft.studio.field.label" value="tipo_casa"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
 	</field>
-	<field name="tipo_rua" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="tipo_rua"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
-	</field>
 	<field name="complemento" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="complemento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
@@ -486,7 +478,7 @@ ORDER BY da.id DESC]]>
 		</band>
 	</title>
 	<detail>
-		<band height="611" splitType="Stretch">
+		<band height="614" splitType="Stretch">
 			<rectangle>
 				<reportElement x="-19" y="-2" width="199" height="30" backcolor="#4A4A49" uuid="280385e1-b0f8-48d2-97d0-74ed57cb9cff"/>
 				<graphicElement>
@@ -555,11 +547,11 @@ ORDER BY da.id DESC]]>
 			</textField>
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="335" y="99" width="162" height="20" uuid="0a45d9a9-feb3-4480-8c04-b62d0a325137"/>
-				<textFieldExpression><![CDATA[$F{cnh}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{cnh} == null ? "NÃO INFORMADO" : $F{cnh}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="85" y="79" width="195" height="20" uuid="e66e1505-ee76-4b69-8001-5bdeec015ad9"/>
-				<textFieldExpression><![CDATA[$F{nome_social}.toUpperCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nome_social} == null ? "NÃO INFORMADO" : $F{nome_social}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="300" y="119" width="35" height="20" uuid="f50ae5a4-0754-4a88-82d5-183fe2b6e1af"/>
@@ -782,91 +774,188 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Possui ajuda de custo em eventos científicos(PRAE):]]></text>
 			</staticText>
 			<image>
-				<reportElement x="282" y="479" width="385" height="4" uuid="39e233f4-d091-42b2-be8e-0e95f7bed119"/>
+				<reportElement x="282" y="473" width="385" height="4" uuid="39e233f4-d091-42b2-be8e-0e95f7bed119"/>
 				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
 			</image>
 			<rectangle>
-				<reportElement x="-19" y="466" width="290" height="30" backcolor="#4A4A49" uuid="71579dcf-0661-4047-bacd-240f212cf97c"/>
+				<reportElement x="-19" y="460" width="290" height="30" backcolor="#4A4A49" uuid="71579dcf-0661-4047-bacd-240f212cf97c"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="464" width="290" height="30" backcolor="#FFBA00" uuid="0aa7c87f-8731-4796-9b35-eb850f53449c"/>
+				<reportElement x="-20" y="458" width="290" height="30" backcolor="#FFBA00" uuid="0aa7c87f-8731-4796-9b35-eb850f53449c"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="471" width="260" height="16" uuid="8f5ba0a2-5e24-402a-9ce4-f420b65f4224"/>
+				<reportElement x="0" y="465" width="260" height="16" uuid="8f5ba0a2-5e24-402a-9ce4-f420b65f4224"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[INFORMAÇÕES ACADÊMICAS E CONTATOS]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="58" y="564" width="214" height="20" uuid="91a6cbe7-ed8e-4dec-9450-670543d9eb82"/>
+				<reportElement style="fontsGeralEnfatico" x="58" y="555" width="214" height="20" uuid="91a6cbe7-ed8e-4dec-9450-670543d9eb82"/>
 				<textFieldExpression><![CDATA[$F{celularb}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="504" width="40" height="20" uuid="ef3a4345-957c-4ca8-9e66-28724701bfd0"/>
+				<reportElement style="fontsGeral" x="0" y="495" width="40" height="20" uuid="ef3a4345-957c-4ca8-9e66-28724701bfd0"/>
 				<text><![CDATA[E-mail:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="340" y="504" width="214" height="20" uuid="986f335a-e700-4344-bd98-ec80d497eb4c"/>
+				<reportElement style="fontsGeralEnfatico" x="340" y="495" width="214" height="20" uuid="986f335a-e700-4344-bd98-ec80d497eb4c"/>
 				<textFieldExpression><![CDATA[$F{curso} == "CC" ? "CIÊNCIAS DA COMPUTAÇÃO" : "SISTEMAS DE INFORMAÇÃO"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="58" y="544" width="214" height="20" uuid="3be5dc7e-79ad-4a18-87cb-d98d347b78e8"/>
+				<reportElement style="fontsGeralEnfatico" x="58" y="535" width="214" height="20" uuid="3be5dc7e-79ad-4a18-87cb-d98d347b78e8"/>
 				<textFieldExpression><![CDATA[$F{celulara}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="410" y="524" width="45" height="20" uuid="8fa5d081-1df1-49e1-a701-a0aea9a19636"/>
+				<reportElement style="fontsGeralEnfatico" x="410" y="515" width="45" height="20" uuid="8fa5d081-1df1-49e1-a701-a0aea9a19636"/>
 				<textFieldExpression><![CDATA[$F{semestre_cursando}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="584" width="80" height="20" uuid="0d2b25b9-06a5-47c7-b0fc-9cad9d68f670"/>
+				<reportElement style="fontsGeral" x="0" y="575" width="80" height="20" uuid="0d2b25b9-06a5-47c7-b0fc-9cad9d68f670"/>
 				<text><![CDATA[Telefone Fixo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="544" width="58" height="20" uuid="9d22da8f-d1ef-411e-b302-7f4bf892b9ff"/>
+				<reportElement style="fontsGeral" x="0" y="535" width="58" height="20" uuid="9d22da8f-d1ef-411e-b302-7f4bf892b9ff"/>
 				<text><![CDATA[Celular 1:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="297" y="524" width="113" height="20" uuid="7e77103c-cbc2-40d6-aec2-8b802cefa2ba"/>
+				<reportElement style="fontsGeral" x="297" y="515" width="113" height="20" uuid="7e77103c-cbc2-40d6-aec2-8b802cefa2ba"/>
 				<text><![CDATA[Semestre em curso:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="564" width="58" height="20" uuid="5fc2dc10-ff7c-40fc-bd81-17c853f2d71a"/>
+				<reportElement style="fontsGeral" x="0" y="555" width="58" height="20" uuid="5fc2dc10-ff7c-40fc-bd81-17c853f2d71a"/>
 				<text><![CDATA[Celular 2:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="80" y="584" width="214" height="20" uuid="012d4aea-5728-4aa0-bdbd-262188671ac6"/>
+				<reportElement style="fontsGeralEnfatico" x="80" y="575" width="214" height="20" uuid="012d4aea-5728-4aa0-bdbd-262188671ac6"/>
 				<textFieldExpression><![CDATA[$F{telefone_fixo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="58" y="524" width="214" height="20" uuid="a0ddbee2-2fe8-43b9-bfd3-df6cc056a183"/>
+				<reportElement style="fontsGeralEnfatico" x="58" y="515" width="214" height="20" uuid="a0ddbee2-2fe8-43b9-bfd3-df6cc056a183"/>
 				<textFieldExpression><![CDATA[$F{siape}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="297" y="504" width="40" height="20" uuid="f9ea8cd1-e8ac-4bb2-8caa-59c2184a9a57"/>
+				<reportElement style="fontsGeral" x="297" y="495" width="40" height="20" uuid="f9ea8cd1-e8ac-4bb2-8caa-59c2184a9a57"/>
 				<text><![CDATA[Curso:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="43" y="504" width="229" height="20" uuid="0ac9c37d-771d-4763-8905-9fe1e644b731"/>
+				<reportElement style="fontsGeralEnfatico" x="43" y="495" width="229" height="20" uuid="0ac9c37d-771d-4763-8905-9fe1e644b731"/>
 				<textFieldExpression><![CDATA[$F{email}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="524" width="60" height="20" uuid="eb67e061-2516-4b37-8c5f-97af91b3484b"/>
+				<reportElement style="fontsGeral" x="0" y="515" width="60" height="20" uuid="eb67e061-2516-4b37-8c5f-97af91b3484b"/>
 				<text><![CDATA[Matrícula:]]></text>
 			</staticText>
-			<break>
-				<reportElement x="0" y="460" width="550" height="1" uuid="0cbd1440-3a75-4239-bc31-bc7d7b6b2e46"/>
-			</break>
+		</band>
+		<band height="298">
+			<rectangle>
+				<reportElement x="-19" y="172" width="199" height="30" backcolor="#4A4A49" uuid="d92f21a5-ac58-4f3c-afa2-b60a68ad3b2e"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="170" width="199" height="30" backcolor="#FFBA00" uuid="46d278bf-0dfe-4010-b132-c13a44ef78d1"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-19" y="8" width="299" height="30" backcolor="#4A4A49" uuid="48e3c903-686e-4a5d-9cb1-8688cfb9002a"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="6" width="299" height="30" backcolor="#FFBA00" uuid="639786c7-235a-49a4-8380-01cb99e1734c"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
 			<staticText>
-				<reportElement x="351" y="570" width="100" height="30" uuid="86d310c5-aac9-4167-83f6-9d023577c190"/>
-				<text><![CDATA[asdfasdfa asdfasfsa]]></text>
+				<reportElement x="1" y="13" width="278" height="16" uuid="23fe7fc0-2626-4185-a00f-efb66333b2a6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SÓCIOECONÔMICO E COMPOSIÇÃO FAMILIAR]]></text>
 			</staticText>
+			<image>
+				<reportElement x="293" y="19" width="374" height="17" uuid="c82f97a2-54b2-41c2-9663-fbb212c37b12"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="-19" y="100" width="299" height="30" backcolor="#FFBA00" uuid="44d19925-f48f-4f8a-b7f9-1a1fdd76b434"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="107" width="278" height="16" uuid="6c0d6b2e-6f69-45e0-ae70-ee5f240968d5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SÓCIOECONÔMICO E COMPOSIÇÃO FAMILIAR]]></text>
+			</staticText>
+			<image>
+				<reportElement x="294" y="114" width="385" height="4" uuid="7e400dc6-38a4-4bf2-a30c-7bf806a4d580"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="44" width="100" height="20" uuid="07919abb-7409-4a8d-814a-261dfc7db759"/>
+				<text><![CDATA[Nome Completo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="278" y="44" width="84" height="20" uuid="6eb5988f-e16c-4bdb-b0dc-5db68f588ef4"/>
+				<text><![CDATA[Parentesco:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="64" width="60" height="20" uuid="da6cd8bd-7b6d-44d7-9283-23fb5bdc2a25"/>
+				<text><![CDATA[Profissão:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="278" y="64" width="42" height="20" uuid="56a87672-24fa-4f69-a133-310353988d71"/>
+				<text><![CDATA[Renda:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="190" y="185" width="385" height="4" uuid="198e4b21-9885-4de5-8c37-35b8886cb51b"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="1" y="177" width="169" height="16" uuid="8529613c-7f96-44a0-be84-85ea1fe503c3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[MORADIA E TRANSPORTE ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-19" y="235" width="138" height="30" backcolor="#4A4A49" uuid="b9282702-ecda-4eb6-888b-758593756282"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="233" width="138" height="30" backcolor="#FFBA00" uuid="3612d5d3-6a74-49ba-9ec9-460e6d43715a"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="240" width="120" height="16" uuid="16a12e29-58d2-4d3b-937c-e6f00d9fe9ea"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTAÇÃO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="130" y="248" width="445" height="21" uuid="ff356d52-6723-4d1b-be5c-ca6ed0c39948"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</detail>
 	<pageFooter>
@@ -881,7 +970,7 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[http://crateus.ufc.br]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="7" width="282" height="19" uuid="f89db1f1-04b8-4ee8-991f-77f2b33e8339"/>
+				<reportElement style="fontsGeral" x="0" y="7" width="350" height="19" uuid="f89db1f1-04b8-4ee8-991f-77f2b33e8339"/>
 				<text><![CDATA[Universidade Federal do Ceará / Campus de Crateús]]></text>
 			</staticText>
 			<staticText>
