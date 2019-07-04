@@ -101,7 +101,7 @@
 				<reportElement style="fontsGeral" x="80" y="28" width="210" height="19" uuid="d402ad1e-1087-4983-b641-df2250d2db7f"/>
 				<textFieldExpression><![CDATA[$F{parentesco} == null ? "NÃO INFORMADO" : $F{parentesco}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
 				<reportElement style="fontsGeral" x="52" y="69" width="100" height="20" uuid="73a07d02-2578-445d-a8d4-639963c2bd37"/>
 				<textFieldExpression><![CDATA[$F{renda_mensal}]]></textFieldExpression>
 			</textField>
