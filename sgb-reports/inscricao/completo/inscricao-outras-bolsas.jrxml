@@ -40,7 +40,7 @@ AND
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Bolsas e outros benefícios vinculados ao CPF:]]></text>
+				<text><![CDATA[Bolsas e/ou outros benefícios vinculados ao CPF:]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -54,7 +54,7 @@ AND
 				<textElement verticalAlignment="Middle">
 					<font fontName="&#xD;&#xA;" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Bolsa]]></text>
+				<text><![CDATA[Descrição]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="fontsGeral" x="180" y="0" width="135" height="20" backcolor="#D9D7D7" uuid="667d5370-3c75-4e72-b59f-cdb3aff7508b"/>
@@ -87,28 +87,28 @@ AND
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="0" y="4" width="180" height="20" uuid="3f5fb16a-63c0-4dc8-a8d4-b33525a5d194"/>
 				<textElement>
-					<font isBold="false"/>
+					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="180" y="4" width="135" height="20" uuid="6fc5914e-716c-4517-a28b-2ddbeb474400"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{concessao_status}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement style="fontsGeralEnfatico" x="315" y="4" width="120" height="20" uuid="e6d56fed-aaef-4b8d-a810-bea731dd6d3f"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_concessao}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement style="fontsGeralEnfatico" x="435" y="4" width="120" height="20" uuid="e3925911-0e7d-481d-bc49-74db3383add4"/>
 				<textElement textAlignment="Center">
-					<font isBold="false"/>
+					<font size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_concessao_final}]]></textFieldExpression>
 			</textField>

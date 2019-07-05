@@ -476,13 +476,13 @@ ORDER BY da.id DESC]]>
 	<detail>
 		<band height="526" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-19" y="-2" width="199" height="30" backcolor="#4A4A49" uuid="280385e1-b0f8-48d2-97d0-74ed57cb9cff"/>
+				<reportElement x="-19" y="-2" width="160" height="30" backcolor="#4A4A49" uuid="280385e1-b0f8-48d2-97d0-74ed57cb9cff"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="-4" width="199" height="30" backcolor="#FFDB66" uuid="a8ad6095-dcc8-4243-8c88-3e52bcae7a12"/>
+				<reportElement x="-20" y="-4" width="160" height="30" backcolor="#FFDB66" uuid="a8ad6095-dcc8-4243-8c88-3e52bcae7a12"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
@@ -494,10 +494,6 @@ ORDER BY da.id DESC]]>
 				</textElement>
 				<text><![CDATA[DADOS PESSOAIS]]></text>
 			</staticText>
-			<image>
-				<reportElement x="190" y="9" width="385" height="4" uuid="cf0be7b6-98c5-4159-a5b1-6661aa2ac741"/>
-				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
-			</image>
 			<textField pattern="MM/dd/yyyy">
 				<reportElement style="fontsGeralEnfatico" x="122" y="74" width="158" height="20" uuid="f83fc88c-1a2f-4571-b159-6bd5ff0673fc"/>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
@@ -677,14 +673,6 @@ ORDER BY da.id DESC]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_hora_inscricao}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="fontsGeralEnfatico" x="0" y="499" width="555" height="20" uuid="1ada44ba-e484-496f-b58f-d9482ff0a681"/>
-				<textFieldExpression><![CDATA[$F{relato_familiar}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="fontsGeral" x="0" y="479" width="555" height="20" uuid="0a2ee31a-d4d2-4577-85c5-86989d7a8f47"/>
-				<text><![CDATA[Relato Familiar:]]></text>
-			</staticText>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="260" width="40" height="20" uuid="871d99b4-2311-4127-bc12-0838e8586605"/>
 				<text><![CDATA[E-mail:]]></text>
@@ -783,6 +771,12 @@ ORDER BY da.id DESC]]>
 				<reportElement style="fontsGeralEnfatico" x="280" y="321" width="275" height="19" uuid="b2374885-4b4f-41aa-9d86-b3a7735c5a8c"/>
 				<textFieldExpression><![CDATA[$F{complemento}.toUpperCase()]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="162" y="11" width="413" height="1" uuid="619fb8b5-deae-44fe-9548-705770e79e32"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#525252"/>
+				</graphicElement>
+			</line>
 		</band>
 		<band height="53">
 			<subreport>
@@ -922,7 +916,7 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Nº de Disciplinas matriculadas (APROVADAS):]]></text>
 			</staticText>
 		</band>
-		<band height="172">
+		<band height="160">
 			<rectangle>
 				<reportElement x="-19" y="10" width="199" height="30" backcolor="#4A4A49" uuid="fe7e0edc-f5f4-4751-bdee-764046044a46"/>
 				<graphicElement>
@@ -1024,7 +1018,10 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Valor gasto diariamente com transporte:]]></text>
 			</staticText>
 		</band>
-		<band height="157">
+		<band height="99">
+			<rectangle>
+				<reportElement x="0" y="42" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="404d393d-9d02-4a3c-afa0-14612f3a2a5d"/>
+			</rectangle>
 			<rectangle>
 				<reportElement x="-19" y="8" width="299" height="30" backcolor="#4A4A49" uuid="a308fb6b-845e-455d-affc-99699ee31214"/>
 				<graphicElement>
@@ -1037,14 +1034,6 @@ ORDER BY da.id DESC]]>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
-			<subreport>
-				<reportElement x="-20" y="107" width="595" height="50" uuid="64396867-8a4a-4db0-82b4-2b0ea2fce028"/>
-				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$F{cpf}]]></subreportParameterExpression>
-				</subreportParameter>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["inscricao/completo/nucleo-familiar.jasper"]]></subreportExpression>
-			</subreport>
 			<staticText>
 				<reportElement x="-5" y="13" width="278" height="16" uuid="7c9be64d-9d95-4e1e-b21e-d63985f5545b"/>
 				<textElement verticalAlignment="Middle">
@@ -1056,38 +1045,45 @@ ORDER BY da.id DESC]]>
 				<reportElement x="295" y="22" width="385" height="4" uuid="867fd247-eab5-4fbb-9641-d87ffa0746ca"/>
 				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
 			</image>
-			<line>
-				<reportElement x="0" y="106" width="555" height="1" forecolor="#B8B8B8" uuid="0b9d29d9-7d80-4dc5-aca4-36e92c109657"/>
-			</line>
 			<textField pattern="¤#,##0.00;¤-#,##0.00">
-				<reportElement style="fontsGeral" x="52" y="85" width="100" height="20" uuid="a151e5e6-68c4-4719-b08a-a4428dcbd4cc"/>
+				<reportElement style="fontsGeral" x="62" y="79" width="100" height="20" uuid="a151e5e6-68c4-4719-b08a-a4428dcbd4cc"/>
 				<textFieldExpression><![CDATA[$F{renda_mensal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="43" width="555" height="20" uuid="9fc1e8a2-9a24-479b-bec7-8992e8cb80f6"/>
-				<textElement>
-					<font fontName="Tahoma" size="14" isBold="true"/>
+				<reportElement x="10" y="42" width="545" height="20" uuid="9fc1e8a2-9a24-479b-bec7-8992e8cb80f6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_completo}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="85" width="50" height="20" uuid="6286f6f9-b32e-4912-85dc-95208d1c9aeb"/>
+				<reportElement style="fontsGeral" x="10" y="79" width="50" height="20" uuid="6286f6f9-b32e-4912-85dc-95208d1c9aeb"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Renda:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="64" width="140" height="20" uuid="42194859-8662-4172-9dfa-95de51e03fe4"/>
+				<reportElement style="fontsGeral" x="10" y="62" width="140" height="17" uuid="42194859-8662-4172-9dfa-95de51e03fe4"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atividade ou Profissão:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="146" y="64" width="242" height="20" uuid="f91bb7c9-5efb-4866-951b-e26d97791775"/>
+				<reportElement style="fontsGeral" x="156" y="62" width="242" height="17" uuid="f91bb7c9-5efb-4866-951b-e26d97791775"/>
 				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
 			</textField>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="50" uuid="64396867-8a4a-4db0-82b4-2b0ea2fce028"/>
+				<subreportParameter name="REPORT_CONNECTION">
+					<subreportParameterExpression><![CDATA[$F{cpf}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["inscricao/completo/nucleo-familiar.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 		<band height="53">
 			<subreport>
@@ -1098,6 +1094,25 @@ ORDER BY da.id DESC]]>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["inscricao/completo/renda-familiar.jasper"]]></subreportExpression>
 			</subreport>
+		</band>
+		<band height="44">
+			<rectangle>
+				<reportElement x="5" y="2" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="d52c0faf-abd2-4c0d-8da3-7b89a59af021"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="fontsGeral" x="15" y="4" width="535" height="20" uuid="ab92601f-4be0-4f63-8ca3-d2c796eb4b1c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relato Familiar:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="15" y="24" width="535" height="20" uuid="816352f2-e13b-46b8-ab32-06f687cbd77a"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{relato_familiar}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="60">
 			<subreport>
@@ -1111,7 +1126,10 @@ ORDER BY da.id DESC]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="82" splitType="Stretch">
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-21" y="0" width="595" height="79" forecolor="#FFFFFF" backcolor="#EDEDED" uuid="d40209ba-cc62-4c42-ab94-bdc7cf54768e"/>
+			</rectangle>
 			<textField>
 				<reportElement style="fontsGeral" x="531" y="46" width="24" height="18" uuid="87c7c156-592f-48ce-8417-13759493b8a2"/>
 				<textElement textAlignment="Center"/>
