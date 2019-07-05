@@ -37,49 +37,49 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="95" splitType="Stretch">
+		<band height="86" splitType="Stretch">
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="48" width="140" height="20" uuid="4028e7c8-6d0b-430d-b229-d3458d4b4f74"/>
+				<reportElement style="fontsGeral" x="0" y="41" width="140" height="20" uuid="4028e7c8-6d0b-430d-b229-d3458d4b4f74"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atividade ou Profissão:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="28" width="80" height="19" uuid="899dced6-4b86-45d6-a691-91203c0bacd5"/>
+				<reportElement style="fontsGeral" x="0" y="21" width="80" height="19" uuid="899dced6-4b86-45d6-a691-91203c0bacd5"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Parentesco:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="69" width="50" height="20" uuid="f4339af7-c0cf-4b8b-91ab-9e4ef7b53aee"/>
+				<reportElement style="fontsGeral" x="0" y="62" width="50" height="20" uuid="f4339af7-c0cf-4b8b-91ab-9e4ef7b53aee"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Renda:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="7" width="555" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
+				<reportElement x="0" y="0" width="555" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
 				<textElement>
 					<font fontName="Tahoma" size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome_completo}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeral" x="148" y="48" width="150" height="20" uuid="11eeeb5a-1af2-4a15-869f-cb5f126680ef"/>
+				<reportElement style="fontsGeral" x="148" y="41" width="150" height="20" uuid="11eeeb5a-1af2-4a15-869f-cb5f126680ef"/>
 				<textFieldExpression><![CDATA[$F{atividade_profissao} == null ? "NÃO INFORMADO" : $F{atividade_profissao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeral" x="80" y="28" width="210" height="19" uuid="d402ad1e-1087-4983-b641-df2250d2db7f"/>
+				<reportElement style="fontsGeral" x="80" y="21" width="210" height="19" uuid="d402ad1e-1087-4983-b641-df2250d2db7f"/>
 				<textFieldExpression><![CDATA[$F{parentesco} == null ? "NÃO INFORMADO" : $F{parentesco}]]></textFieldExpression>
 			</textField>
 			<textField pattern="¤#,##0.00;¤-#,##0.00">
-				<reportElement style="fontsGeral" x="52" y="69" width="100" height="20" uuid="73a07d02-2578-445d-a8d4-639963c2bd37"/>
+				<reportElement style="fontsGeral" x="52" y="62" width="100" height="20" uuid="73a07d02-2578-445d-a8d4-639963c2bd37"/>
 				<textFieldExpression><![CDATA[$F{renda_mensal}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="94" width="555" height="1" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
+				<reportElement x="0" y="85" width="555" height="1" forecolor="#B8B8B8" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
 			</line>
 		</band>
 	</detail>
