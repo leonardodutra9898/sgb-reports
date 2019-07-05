@@ -41,7 +41,7 @@
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="3" width="141" height="30" backcolor="#FFBA00" uuid="16a16107-2ef0-4444-96c7-de0b0976497e"/>
+				<reportElement x="-20" y="3" width="141" height="30" backcolor="#FFDB66" uuid="16a16107-2ef0-4444-96c7-de0b0976497e"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
@@ -49,7 +49,7 @@
 			<staticText>
 				<reportElement x="2" y="10" width="108" height="16" uuid="9a3b3e41-4709-400a-9f0e-aa273e0e2ce5"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DOCUMENTAÇÃO]]></text>
 			</staticText>

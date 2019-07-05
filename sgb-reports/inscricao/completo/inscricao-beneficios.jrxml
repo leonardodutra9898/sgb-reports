@@ -43,19 +43,15 @@ AND
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="53" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<line>
-				<reportElement x="0" y="52" width="555" height="1" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
+				<reportElement x="0" y="25" width="555" height="1" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
 			</line>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="0" y="28" width="555" height="22" uuid="859d1f23-2f52-4032-badc-09da1947088d"/>
+				<reportElement style="fontsGeralEnfatico" x="0" y="4" width="555" height="20" uuid="3f5fb16a-63c0-4dc8-a8d4-b33525a5d194"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{descricao}.toUpperCase()]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="fontsGeralEnfatico" x="0" y="4" width="555" height="20" uuid="3f5fb16a-63c0-4dc8-a8d4-b33525a5d194"/>
 				<textFieldExpression><![CDATA[$F{nome}.toUpperCase()]]></textFieldExpression>
 			</textField>
 		</band>
