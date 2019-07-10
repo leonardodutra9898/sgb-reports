@@ -33,7 +33,7 @@
     b.cod_banco, b.nome_banco, 
     p.ano, p.data_abertura, p.data_encerramento, p.status_processo, 
     be.meses_concessao, be.descricao as descricao_beneficio, be.nome as nome_beneficio,
-    da.semestre_cursando, da.status, da.curso
+    da.semestre_cursando, da.status, da.curso, da.num_disciplina, da.num_disciplina_aprovada, da.periodo_letivo, da.matricula as matricula_acad
 FROM 
 	inscricao AS i, aluno AS a, logradouro AS l, cidade AS c, 
 	estado AS e, orgao_expedidor AS oe, banco AS b, processo AS p, beneficio AS be,
@@ -454,6 +454,25 @@ ORDER BY da.id DESC]]>
 		<property name="com.jaspersoft.studio.field.label" value="curso"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
 	</field>
+	<field name="matricula_acad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="matricula_acad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<field name="num_disciplina" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.label" value="num_disciplina"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<field name="num_disciplina_aprovada" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.label" value="num_disciplina_aprovada"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<field name="periodo_letivo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="periodo_letivo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dados_academicos"/>
+	</field>
+	<variable name="PERCENTUAL_APROVACAO" class="java.lang.Float">
+		<variableExpression><![CDATA[$F{num_disciplina_aprovada}/$F{num_disciplina}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -474,7 +493,7 @@ ORDER BY da.id DESC]]>
 		</band>
 	</title>
 	<detail>
-		<band height="526" splitType="Stretch">
+		<band height="478" splitType="Stretch">
 			<rectangle>
 				<reportElement x="-19" y="-2" width="160" height="30" backcolor="#4A4A49" uuid="280385e1-b0f8-48d2-97d0-74ed57cb9cff"/>
 				<graphicElement>
@@ -655,19 +674,19 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[DADOS DA INSCRIÇÃO E BENEFÍCIOS SOLICITADOS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="459" width="111" height="20" uuid="604344a2-18fa-4feb-a76a-e80cad35688d"/>
+				<reportElement style="fontsGeral" x="0" y="453" width="111" height="20" uuid="604344a2-18fa-4feb-a76a-e80cad35688d"/>
 				<text><![CDATA[Código de Inscrição:]]></text>
 			</staticText>
 			<textField pattern="#0000000000">
-				<reportElement style="fontsGeralEnfatico" x="113" y="459" width="144" height="20" uuid="771545aa-119d-415d-ba33-7d90025685e0"/>
+				<reportElement style="fontsGeralEnfatico" x="113" y="453" width="144" height="20" uuid="771545aa-119d-415d-ba33-7d90025685e0"/>
 				<textFieldExpression><![CDATA[$F{cod_inscricao}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="281" y="459" width="101" height="20" uuid="dea9b63e-00f7-4270-922f-f4e1dc043806"/>
+				<reportElement style="fontsGeral" x="281" y="453" width="101" height="20" uuid="dea9b63e-00f7-4270-922f-f4e1dc043806"/>
 				<text><![CDATA[Data da Inscrição:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="382" y="459" width="172" height="20" uuid="56299eae-192c-43d2-8bdd-0b8fccb9375d"/>
+				<reportElement style="fontsGeral" x="382" y="453" width="172" height="20" uuid="56299eae-192c-43d2-8bdd-0b8fccb9375d"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -778,9 +797,9 @@ ORDER BY da.id DESC]]>
 				</graphicElement>
 			</line>
 		</band>
-		<band height="53">
+		<band height="44">
 			<subreport>
-				<reportElement x="-20" y="-7" width="595" height="60" uuid="12666a38-36f8-4f60-8921-862e56b4a349"/>
+				<reportElement x="-20" y="0" width="595" height="29" uuid="12666a38-36f8-4f60-8921-862e56b4a349"/>
 				<subreportParameter name="inscricao_id">
 					<subreportParameterExpression><![CDATA[$F{cod_inscricao}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -845,7 +864,7 @@ ORDER BY da.id DESC]]>
 				<textFieldExpression><![CDATA[$F{isencaoruprae} ? "( X )" : "(  )"]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="55">
+		<band height="62">
 			<subreport>
 				<reportElement x="-20" y="1" width="595" height="54" uuid="8e45ee8f-5c92-45e8-a995-6bf012f91775"/>
 				<subreportParameter name="aluno_id">
@@ -855,7 +874,7 @@ ORDER BY da.id DESC]]>
 				<subreportExpression><![CDATA["inscricao/completo/inscricao-outras-bolsas.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
-		<band height="139">
+		<band height="152">
 			<rectangle>
 				<reportElement x="-20" y="4" width="210" height="30" backcolor="#4A4A49" uuid="804950b8-d8d8-4d06-a363-e8b80e38f677"/>
 				<graphicElement>
@@ -884,11 +903,11 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Semestre em curso:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeralEnfatico" x="42" y="45" width="214" height="20" uuid="986f335a-e700-4344-bd98-ec80d497eb4c"/>
-				<textFieldExpression><![CDATA[$F{curso} == "CC" ? "CIÊNCIAS DA COMPUTAÇÃO" : "SISTEMAS DE INFORMAÇÃO"]]></textFieldExpression>
+				<reportElement style="fontsGeralEnfatico" x="42" y="45" width="278" height="20" uuid="986f335a-e700-4344-bd98-ec80d497eb4c"/>
+				<textFieldExpression><![CDATA[$F{curso}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="fontsGeralEnfatico" x="112" y="65" width="45" height="20" uuid="8fa5d081-1df1-49e1-a701-a0aea9a19636"/>
+			<textField pattern="#º">
+				<reportElement style="fontsGeralEnfatico" x="112" y="65" width="68" height="20" uuid="8fa5d081-1df1-49e1-a701-a0aea9a19636"/>
 				<textFieldExpression><![CDATA[$F{semestre_cursando}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -903,17 +922,53 @@ ORDER BY da.id DESC]]>
 				<reportElement style="fontsGeral" x="330" y="45" width="60" height="20" uuid="eb67e061-2516-4b37-8c5f-97af91b3484b"/>
 				<text><![CDATA[Matrícula:]]></text>
 			</staticText>
-			<textField>
-				<reportElement style="fontsGeralEnfatico" x="390" y="45" width="164" height="20" uuid="a0ddbee2-2fe8-43b9-bfd3-df6cc056a183"/>
-				<textFieldExpression><![CDATA[$F{siape}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="330" y="65" width="81" height="20" uuid="b36e3fcb-450b-4e39-9fa0-0f7127844b45"/>
 				<text><![CDATA[Período Atual:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="fontsGeral" x="-1" y="105" width="171" height="34" uuid="58e66a5d-58fd-496f-9e95-b2534ebf5e2d"/>
+				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Nº de Disciplinas matriculadas (APROVADAS):]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="390" y="45" width="164" height="20" uuid="ac455e4f-50ff-44ed-b308-26fa9bedc9b6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{matricula_acad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeral" x="411" y="65" width="143" height="20" uuid="15f8f20b-57fc-4baa-88b3-a7076a1550a1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodo_letivo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.###;(#,###.###-)">
+				<reportElement style="fontsGeral" x="170" y="85" width="109" height="20" uuid="2ec34f26-e0f2-4fd4-8aa9-6034d6cabc58"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_disciplina}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###.###;(#,###.###-)">
+				<reportElement style="fontsGeral" x="170" y="105" width="109" height="34" uuid="b907801e-4568-4fb7-8c39-d492f554d3ce"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{num_disciplina_aprovada}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.##%">
+				<reportElement style="fontsGeral" x="470" y="85" width="84" height="25" uuid="5982b863-7570-4fc9-b76f-822b4497819b"/>
+				<textElement verticalAlignment="Top">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PERCENTUAL_APROVACAO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="330" y="85" width="140" height="25" uuid="7f38fa80-aced-4cfc-8f74-2f14d9e4f0a9"/>
+				<text><![CDATA[Percentual de Aprovação:]]></text>
 			</staticText>
 		</band>
 		<band height="160">
@@ -1018,7 +1073,7 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Valor gasto diariamente com transporte:]]></text>
 			</staticText>
 		</band>
-		<band height="99">
+		<band height="172">
 			<rectangle>
 				<reportElement x="0" y="42" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="404d393d-9d02-4a3c-afa0-14612f3a2a5d"/>
 			</rectangle>
@@ -1046,7 +1101,7 @@ ORDER BY da.id DESC]]>
 				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
 			</image>
 			<textField pattern="¤#,##0.00;¤-#,##0.00">
-				<reportElement style="fontsGeral" x="62" y="79" width="100" height="20" uuid="a151e5e6-68c4-4719-b08a-a4428dcbd4cc"/>
+				<reportElement style="fontsGeral" x="62" y="116" width="100" height="20" uuid="a151e5e6-68c4-4719-b08a-a4428dcbd4cc"/>
 				<textFieldExpression><![CDATA[$F{renda_mensal}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -1057,22 +1112,55 @@ ORDER BY da.id DESC]]>
 				<textFieldExpression><![CDATA[$F{nome_completo}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="fontsGeral" x="10" y="79" width="50" height="20" uuid="6286f6f9-b32e-4912-85dc-95208d1c9aeb"/>
+				<reportElement style="fontsGeral" x="10" y="116" width="50" height="20" uuid="6286f6f9-b32e-4912-85dc-95208d1c9aeb"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Renda:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="10" y="62" width="140" height="17" uuid="42194859-8662-4172-9dfa-95de51e03fe4"/>
+				<reportElement style="fontsGeral" x="10" y="99" width="140" height="17" uuid="42194859-8662-4172-9dfa-95de51e03fe4"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Atividade ou Profissão:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="156" y="62" width="242" height="17" uuid="f91bb7c9-5efb-4866-951b-e26d97791775"/>
+				<reportElement style="fontsGeral" x="156" y="99" width="242" height="17" uuid="f91bb7c9-5efb-4866-951b-e26d97791775"/>
 				<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="10" y="65" width="108" height="17" uuid="a7599df7-714e-4f8f-98ef-4b58883b48f4"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trabalho formal?]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="121" y="65" width="118" height="17" uuid="892c804e-8f72-4006-a341-eb09cd15f63b"/>
+				<textFieldExpression><![CDATA[$F{trabalha_formalmente} ? "SIM" : "NÃO"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="10" y="136" width="130" height="31" uuid="aa90b776-8372-4f0f-bd1d-1d9302c0b968"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Se estagiário, onde realiza estágio?]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="140" y="136" width="415" height="31" uuid="28a75fac-c0f9-4673-b454-c5b339f7c9c3"/>
+				<textFieldExpression><![CDATA[$F{onde_faz_estagio} == null ? "NÃO INFORMADO" : $F{onde_faz_estagio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="10" y="82" width="160" height="17" uuid="a3796ec0-2283-4e23-b2f5-9f7ebcd3cc9c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Empresa Onde trabalha?]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="170" y="82" width="384" height="17" uuid="b1ca685f-d52e-418e-acc7-bcc95be53a8d"/>
+				<textFieldExpression><![CDATA[$F{empresa} == null ? "NÃO INFORMADO" : $F{empresa}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="50">
@@ -1116,7 +1204,7 @@ ORDER BY da.id DESC]]>
 		</band>
 		<band height="60">
 			<subreport>
-				<reportElement x="-19" y="0" width="593" height="60" uuid="813f6052-ae08-4156-9ea5-f41daacac229"/>
+				<reportElement x="-20" y="0" width="595" height="60" uuid="813f6052-ae08-4156-9ea5-f41daacac229"/>
 				<subreportParameter name="inscricao_id">
 					<subreportParameterExpression><![CDATA[$F{cod_inscricao}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -1124,16 +1212,20 @@ ORDER BY da.id DESC]]>
 				<subreportExpression><![CDATA["inscricao/completo/documentacao.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
+		<band height="49">
+			<subreport>
+				<reportElement x="-20" y="0" width="595" height="49" uuid="93fff669-e80b-45cd-ac48-441236e5012b"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["inscricao/completo/documentacao-beneficios.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<pageFooter>
-		<band height="79" splitType="Stretch">
-			<rectangle>
-				<reportElement x="-21" y="0" width="595" height="79" forecolor="#FFFFFF" backcolor="#EDEDED" uuid="d40209ba-cc62-4c42-ab94-bdc7cf54768e"/>
-			</rectangle>
+		<band height="83" splitType="Stretch">
 			<textField>
-				<reportElement style="fontsGeral" x="531" y="46" width="24" height="18" uuid="87c7c156-592f-48ce-8417-13759493b8a2"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				<reportElement style="fontsGeral" x="443" y="46" width="112" height="18" uuid="87c7c156-592f-48ce-8417-13759493b8a2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="45" width="240" height="18" uuid="f9d23add-99ad-47cd-8761-e2c70d57d784"/>
@@ -1149,11 +1241,6 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Data Impressão]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="481" y="46" width="50" height="18" uuid="c2875352-9fb5-4f8f-a146-7bd3b6bab926"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[Página]]></text>
-			</staticText>
-			<staticText>
 				<reportElement style="fontsGeral" x="0" y="26" width="240" height="19" uuid="6a869192-37d6-40d8-9fb1-30ea0fd13cf0"/>
 				<text><![CDATA[KM 3, Bairro dos Venâncios, SN]]></text>
 			</staticText>
@@ -1162,6 +1249,10 @@ ORDER BY da.id DESC]]>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="63" width="240" height="18" uuid="05c5f498-bf96-4325-a000-8540fa715128"/>
+				<text><![CDATA[http://sgb.crateus.ufc.br]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
