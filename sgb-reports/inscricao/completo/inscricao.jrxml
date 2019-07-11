@@ -8,6 +8,7 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
 	i.id as cod_inscricao, i.acomp_pedag_prae, i.acomp_psi_prae, i.ajuda_custo_evento_cientifico_prae,
@@ -42,7 +43,7 @@ WHERE
 	i.aluno_id = a.id AND a.logradouro_id = l.id AND 
 	a.cidade_id = c.id AND a.uf_id = e.id 
 	AND a.orgao_expedidorrg_id = oe.id AND i.processo_id = p.id
-	AND b.id = a.banco_id AND i.id = 4 AND be.id = p.beneficio_id 
+	AND b.id = a.banco_id AND i.id = $P{inscricao_id} AND be.id = p.beneficio_id 
 	AND da.aluno_id = a.id 
 ORDER BY da.id DESC]]>
 	</queryString>
@@ -628,7 +629,7 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Naturalidade: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="300" y="34" width="30" height="19" uuid="5cd4c7f7-af4c-47dd-bfd2-caa35794ec9c"/>
+				<reportElement style="fontsGeral" x="300" y="35" width="30" height="19" uuid="5cd4c7f7-af4c-47dd-bfd2-caa35794ec9c"/>
 				<text><![CDATA[CPF:]]></text>
 			</staticText>
 			<textField>
@@ -1206,7 +1207,7 @@ ORDER BY da.id DESC]]>
 			<subreport>
 				<reportElement x="-20" y="0" width="595" height="60" uuid="813f6052-ae08-4156-9ea5-f41daacac229"/>
 				<subreportParameter name="inscricao_id">
-					<subreportParameterExpression><![CDATA[$F{cod_inscricao}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["inscricao/completo/documentacao.jasper"]]></subreportExpression>
@@ -1215,6 +1216,9 @@ ORDER BY da.id DESC]]>
 		<band height="49">
 			<subreport>
 				<reportElement x="-20" y="0" width="595" height="49" uuid="93fff669-e80b-45cd-ac48-441236e5012b"/>
+				<subreportParameter name="inscricao_id">
+					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
+				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["inscricao/completo/documentacao-beneficios.jasper"]]></subreportExpression>
 			</subreport>

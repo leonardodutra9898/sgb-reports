@@ -6,11 +6,12 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM 
 			beneficio as b, inscricao_beneficios as ib
 		WHERE 
-			ib.inscricao_id = 4 AND ib.beneficios_id = b.id]]>
+			ib.inscricao_id = $P{inscricao_id} AND ib.beneficios_id = b.id]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
@@ -28,25 +29,25 @@
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="44">
+		<band height="36">
 			<rectangle>
-				<reportElement x="-19" y="8" width="219" height="30" backcolor="#4A4A49" uuid="6740a44d-8dae-4e80-8b6c-56ce8a3dbf67"/>
+				<reportElement x="-19" y="4" width="219" height="30" backcolor="#4A4A49" uuid="6740a44d-8dae-4e80-8b6c-56ce8a3dbf67"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<rectangle>
-				<reportElement x="-20" y="6" width="221" height="30" backcolor="#FFDB66" uuid="6de0223e-a429-4f78-918f-4594c2003d0a"/>
+				<reportElement x="-20" y="2" width="221" height="30" backcolor="#FFDB66" uuid="6de0223e-a429-4f78-918f-4594c2003d0a"/>
 				<graphicElement>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
 				</graphicElement>
 			</rectangle>
 			<image>
-				<reportElement x="216" y="21" width="445" height="13" uuid="c7c7a036-d0a6-4f25-b402-5a04daefb741"/>
+				<reportElement x="216" y="17" width="445" height="13" uuid="c7c7a036-d0a6-4f25-b402-5a04daefb741"/>
 				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="0" y="13" width="190" height="16" uuid="7111cb3c-c5e5-4e19-9972-4d45ee82b01f"/>
+				<reportElement x="0" y="9" width="190" height="16" uuid="7111cb3c-c5e5-4e19-9972-4d45ee82b01f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12" isBold="true"/>
 				</textElement>
@@ -55,7 +56,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="60" splitType="Stretch">
+		<band height="58" splitType="Stretch">
 			<rectangle>
 				<reportElement x="0" y="2" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="5fe88869-b99e-44f8-932a-f06597b65ff8"/>
 			</rectangle>
@@ -67,7 +68,10 @@
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
 			<subreport>
-				<reportElement x="0" y="26" width="555" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
+				<reportElement x="0" y="24" width="480" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
+				<subreportParameter name="inscricao_id">
+					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
+				</subreportParameter>
 				<subreportParameter name="beneficio_id">
 					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
 				</subreportParameter>

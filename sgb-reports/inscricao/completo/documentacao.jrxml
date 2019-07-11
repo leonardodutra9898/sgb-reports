@@ -6,8 +6,9 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT * FROM documentacao as d, documentacao_arquivos as da WHERE d.id = da.documentacao_id AND inscricao_id = 4 AND categoria = 'GERAL' ORDER BY documento ASC]]>
+		<![CDATA[SELECT * FROM documentacao as d, documentacao_arquivos as da WHERE d.id = da.documentacao_id AND inscricao_id = $P{inscricao_id} AND categoria = 'GERAL' ORDER BY documento ASC]]>
 	</queryString>
 	<field name="categoria" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
