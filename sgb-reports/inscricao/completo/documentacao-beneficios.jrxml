@@ -56,19 +56,9 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="58" splitType="Stretch">
-			<rectangle>
-				<reportElement x="0" y="2" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="5fe88869-b99e-44f8-932a-f06597b65ff8"/>
-			</rectangle>
-			<textField>
-				<reportElement style="fontsGeral" x="10" y="2" width="545" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
-			</textField>
+		<band height="36" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="24" width="480" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
+				<reportElement x="0" y="2" width="480" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
 				<subreportParameter name="inscricao_id">
 					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
 				</subreportParameter>

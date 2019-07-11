@@ -12,7 +12,8 @@
 		<![CDATA[SELECT 
 				d.id, d.documento, d.documento_tipo, d.ativo, d.categoria, d.obrigatorio,
 		        db.beneficios_id, db.documentacao_id,
-		        da.formato_arquivo, da.data_postagem, da.inscricao_id, da.situacao_documento
+		        da.formato_arquivo, da.data_postagem, da.inscricao_id, da.situacao_documento,
+		        b.nome
 			FROM 
 				documentacao as d
 			INNER JOIN 
@@ -22,13 +23,16 @@
 			INNER JOIN  
 				documentacao_beneficios as db
 			ON
-				db.documentacao_id = da.documentacao_id
+				db.documentacao_id = da.documentacao_id,
+				beneficio as b
 		    WHERE
 		    	d.categoria = 'ESPECIFICO'
 			AND
 				db.beneficios_id = $P{beneficio_id}
 			AND 
-				da.inscricao_id = $P{inscricao_id}		
+				da.inscricao_id = $P{inscricao_id}
+			AND
+				b.id = db.beneficios_id		
 			ORDER BY 
 				d.documento ASC]]>
 	</queryString>
@@ -52,42 +56,38 @@
 		<property name="com.jaspersoft.studio.field.label" value="situacao_documento"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
 	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="b"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
 		<band height="20">
-			<staticText>
-				<reportElement x="0" y="0" width="555" height="20" uuid="0078b7f9-fd25-424b-8edc-d10a048e07e8"/>
-				<textElement>
-					<font fontName="tahoma" size="13"/>
+			<rectangle>
+				<reportElement x="0" y="0" width="508" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="cd346e42-9285-47fa-9fe4-1b18d2834415"/>
+			</rectangle>
+			<textField>
+				<reportElement x="10" y="0" width="499" height="20" uuid="a2fa45f3-f6db-49c6-98ec-19ed21724450"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="tahoma" size="13" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Static Text]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="46" splitType="Stretch">
-			<staticText>
-				<reportElement style="fontsGeral" x="10" y="21" width="90" height="20" uuid="4028e7c8-6d0b-430d-b229-d3458d4b4f74"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Data Entrega:]]></text>
-			</staticText>
+		<band height="26" splitType="Stretch">
 			<textField>
-				<reportElement style="fontsGeral" x="10" y="1" width="510" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
+				<reportElement style="fontsGeral" x="20" y="1" width="488" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{documento}.toUpperCase()]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement style="fontsGeral" x="101" y="21" width="150" height="20" uuid="11eeeb5a-1af2-4a15-869f-cb5f126680ef"/>
-				<textFieldExpression><![CDATA[$F{data_postagem}]]></textFieldExpression>
-			</textField>
 			<line>
-				<reportElement x="0" y="45" width="475" height="1" forecolor="#6B6B6B" uuid="7908334b-dac5-40df-9946-0dbda3b76d9c"/>
+				<reportElement x="20" y="25" width="490" height="1" forecolor="#6B6B6B" uuid="7908334b-dac5-40df-9946-0dbda3b76d9c"/>
 			</line>
 		</band>
 	</detail>

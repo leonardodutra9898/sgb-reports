@@ -6,13 +6,16 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="aluno_id" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM 
 	concessao as c, beneficio as b
 WHERE 
-	c.aluno_id = 4
+	c.aluno_id = $P{aluno_id}
 AND
-	c.beneficio_id = b.id]]>
+	c.beneficio_id = b.id
+AND 
+	b.tipo_beneficio = 'BOLSA']]>
 	</queryString>
 	<field name="concessao_status" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="concessao_status"/>
@@ -40,7 +43,7 @@ AND
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Bolsas e/ou outros benefícios vinculados ao CPF:]]></text>
+				<text><![CDATA[Bolsas vinculadas ao CPF:]]></text>
 			</staticText>
 		</band>
 	</title>

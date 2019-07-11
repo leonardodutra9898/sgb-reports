@@ -331,7 +331,7 @@ ORDER BY da.id DESC]]>
 		<property name="com.jaspersoft.studio.field.label" value="rg"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
 	</field>
-	<field name="sexo" class="java.lang.String">
+	<field name="sexo" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="sexo"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
 	</field>
@@ -638,7 +638,7 @@ ORDER BY da.id DESC]]>
 			</textField>
 			<textField>
 				<reportElement style="fontsGeralEnfatico" x="335" y="113" width="162" height="20" uuid="c2db392f-92e9-45fc-9a1f-159dc5ffcc43"/>
-				<textFieldExpression><![CDATA[$F{sexo} == "m" ? "MASCULINO" : "FEMININO"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{sexo} > 0 ? "MASCULINO" : "FEMININO"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="fontsGeral" x="0" y="54" width="80" height="20" backcolor="#BDAEA4" uuid="30fd9176-482f-4b5c-9a56-bc12bf36fff5"/>
@@ -1001,33 +1001,33 @@ ORDER BY da.id DESC]]>
 				<text><![CDATA[Tipo de Moradia:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="87" width="82" height="20" uuid="4e18fb41-8019-49a0-82c1-4e808899035e"/>
+				<reportElement style="fontsGeral" x="0" y="87" width="90" height="20" uuid="4e18fb41-8019-49a0-82c1-4e808899035e"/>
 				<text><![CDATA[Moradia Rural?]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="fontsGeral" x="0" y="67" width="111" height="20" uuid="8f6ccd81-bf43-416d-bc75-4a453d5d18bf"/>
-				<text><![CDATA[Situação do Imóvel:]]></text>
+				<reportElement style="fontsGeral" x="0" y="67" width="58" height="20" uuid="8f6ccd81-bf43-416d-bc75-4a453d5d18bf"/>
+				<text><![CDATA[Situação:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="fontsGeral" x="330" y="47" width="140" height="33" uuid="8f05a944-c98d-49d0-ab2d-b7bb09ff39fa"/>
 				<text><![CDATA[Valor da mensalidade do imóvel (caso financiado):]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="fontsGeral" x="101" y="47" width="229" height="20" uuid="c806f77b-0096-4ac8-9b5a-b97fd2c49339"/>
+				<reportElement style="fontsGeral" x="58" y="67" width="198" height="20" uuid="c806f77b-0096-4ac8-9b5a-b97fd2c49339"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo_moradia}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeral" x="85" y="87" width="100" height="20" uuid="148bdc4c-3f78-452d-88dd-e21b9883c5b4"/>
+				<reportElement style="fontsGeral" x="95" y="87" width="100" height="20" uuid="148bdc4c-3f78-452d-88dd-e21b9883c5b4"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{moradia_rural} == true ? "SIM" : "NÃO"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="fontsGeral" x="111" y="67" width="149" height="20" uuid="b2ee8e70-dd23-4e09-8d57-5dd3c3b82c46"/>
+				<reportElement style="fontsGeral" x="101" y="47" width="149" height="20" uuid="b2ee8e70-dd23-4e09-8d57-5dd3c3b82c46"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -1051,7 +1051,7 @@ ORDER BY da.id DESC]]>
 				<reportElement style="fontsGeral" x="0" y="107" width="111" height="20" uuid="ade50039-4545-483b-a2a1-902bd4a6f5f3"/>
 				<text><![CDATA[Meio de Transporte:]]></text>
 			</staticText>
-			<textField>
+			<textField pattern="#,##0.###;(#,##0.###-)">
 				<reportElement style="fontsGeral" x="119" y="127" width="142" height="33" uuid="391c0e59-d1a6-4d81-b496-a3d742716591"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
