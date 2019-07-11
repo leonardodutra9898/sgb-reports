@@ -1182,8 +1182,8 @@ ORDER BY da.id DESC]]>
 		<band height="50">
 			<subreport>
 				<reportElement x="-20" y="0" width="595" height="50" uuid="64396867-8a4a-4db0-82b4-2b0ea2fce028"/>
-				<subreportParameter name="REPORT_CONNECTION">
-					<subreportParameterExpression><![CDATA[$F{cpf}]]></subreportParameterExpression>
+				<subreportParameter name="aluno_id">
+					<subreportParameterExpression><![CDATA[$F{cod_aluno}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA["inscricao/completo/nucleo-familiar.jasper"]]></subreportExpression>

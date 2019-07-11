@@ -58,7 +58,7 @@
 	<detail>
 		<band height="36" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="2" width="480" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
+				<reportElement x="-20" y="2" width="595" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
 				<subreportParameter name="inscricao_id">
 					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
 				</subreportParameter>

@@ -6,6 +6,7 @@
 	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
 	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
 	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.Long"/>
 	<queryString>
 		<![CDATA[SELECT * 
 FROM 
@@ -15,7 +16,7 @@ WHERE
 AND
 	ib.beneficios_id = b.id
 AND
-	i.id = 4]]>
+	i.id = $P{inscricao_id}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="nome"/>

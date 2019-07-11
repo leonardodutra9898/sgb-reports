@@ -66,10 +66,10 @@
 	<columnHeader>
 		<band height="20">
 			<rectangle>
-				<reportElement x="0" y="0" width="508" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="cd346e42-9285-47fa-9fe4-1b18d2834415"/>
+				<reportElement x="0" y="0" width="560" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="cd346e42-9285-47fa-9fe4-1b18d2834415"/>
 			</rectangle>
 			<textField>
-				<reportElement x="10" y="0" width="499" height="20" uuid="a2fa45f3-f6db-49c6-98ec-19ed21724450"/>
+				<reportElement x="10" y="0" width="480" height="20" uuid="a2fa45f3-f6db-49c6-98ec-19ed21724450"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="tahoma" size="13" isBold="true"/>
 				</textElement>
@@ -87,7 +87,7 @@
 				<textFieldExpression><![CDATA[$F{documento}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="20" y="25" width="490" height="1" forecolor="#6B6B6B" uuid="7908334b-dac5-40df-9946-0dbda3b76d9c"/>
+				<reportElement x="20" y="25" width="540" height="1" forecolor="#6B6B6B" uuid="7908334b-dac5-40df-9946-0dbda3b76d9c"/>
 			</line>
 		</band>
 	</detail>
