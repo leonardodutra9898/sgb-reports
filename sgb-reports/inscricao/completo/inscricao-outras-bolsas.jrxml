@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="aluno_id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM 
+	concessao as c, beneficio as b
+WHERE 
+	c.aluno_id = $P{aluno_id}
+AND
+	c.beneficio_id = b.id
+AND 
+	b.tipo_beneficio = 'BOLSA']]>
+	</queryString>
+	<field name="concessao_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="concessao_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<field name="data_concessao" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_concessao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<field name="data_concessao_final" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_concessao_final"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20">
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="0" width="555" height="20" uuid="5b14571e-e40a-46cc-b439-68373a6b4746"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bolsas vinculadas ao CPF:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement x="-20" y="0" width="595" height="20" forecolor="#E8E8E8" backcolor="#E8E8E8" uuid="527704d6-8029-4597-bd30-443f1d22dca4"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="0" width="180" height="20" backcolor="#D9D7D7" uuid="b1963670-a57e-491f-ba5b-c8d0031ab79b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="&#xD;&#xA;" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="180" y="0" width="135" height="20" backcolor="#D9D7D7" uuid="667d5370-3c75-4e72-b59f-cdb3aff7508b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="315" y="0" width="120" height="20" backcolor="#D9D7D7" uuid="787b55e2-ba50-4e2d-a33e-da304b039a8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Concessão]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="435" y="0" width="120" height="20" backcolor="#D9D7D7" uuid="2eb1c579-b88f-438f-a300-fbd5b5df25ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data à expirar]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="25" width="555" height="1" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
+			</line>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="4" width="180" height="20" uuid="3f5fb16a-63c0-4dc8-a8d4-b33525a5d194"/>
+				<textElement>
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="180" y="4" width="135" height="20" uuid="6fc5914e-716c-4517-a28b-2ddbeb474400"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{concessao_status}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="fontsGeralEnfatico" x="315" y="4" width="120" height="20" uuid="e6d56fed-aaef-4b8d-a810-bea731dd6d3f"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_concessao}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement style="fontsGeralEnfatico" x="435" y="4" width="120" height="20" uuid="e3925911-0e7d-481d-bc49-74db3383add4"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{data_concessao_final}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

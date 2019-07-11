@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM documentacao as d, documentacao_arquivos as da WHERE d.id = da.documentacao_id AND inscricao_id = $P{inscricao_id} AND categoria = 'GERAL' ORDER BY documento ASC]]>
+	</queryString>
+	<field name="categoria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="documento_tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="documento_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="data_postagem" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="data_postagem"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<field name="situacao_documento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="situacao_documento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="33">
+			<rectangle>
+				<reportElement x="-19" y="3" width="178" height="30" backcolor="#4A4A49" uuid="f9c314e0-ea58-42b6-8d4c-499659757dea"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="1" width="180" height="30" backcolor="#FFDB66" uuid="16a16107-2ef0-4444-96c7-de0b0976497e"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="8" width="150" height="16" uuid="9a3b3e41-4709-400a-9f0e-aa273e0e2ce5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTAÇÃO GERAL]]></text>
+			</staticText>
+			<image>
+				<reportElement x="176" y="16" width="445" height="13" uuid="d85b549e-f858-4d45-b886-d61e3cc29d2a"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="6" width="560" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="5fe88869-b99e-44f8-932a-f06597b65ff8"/>
+			</rectangle>
+			<textField>
+				<reportElement style="fontsGeral" x="10" y="6" width="540" height="20" uuid="159b8e3f-c4d0-4f00-b83b-95733bd61033"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{documento}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

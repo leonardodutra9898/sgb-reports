@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="aluno_id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT sum(renda_mensal) as soma, count(id) as total, aluno_id 
+			FROM situacao_socio_econ_familiar WHERE aluno_id = $P{aluno_id}
+			UNION
+			SELECT sum(renda_mensal) as soma, count(id) as total, aluno_id
+			FROM inscricao WHERE aluno_id = $P{aluno_id}]]>
+	</queryString>
+	<field name="soma" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="soma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n"/>
+	</field>
+	<field name="total" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="n"/>
+	</field>
+	<variable name="SOMA_RENDA" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{soma}]]></variableExpression>
+	</variable>
+	<variable name="TOTAL_NUCLEO_FAMILIAR" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="RENDA_PER_CAPITA" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{SOMA_RENDA}/$V{TOTAL_NUCLEO_FAMILIAR}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="20">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#E8E8E8" uuid="729ebf08-fe12-4dc8-9e21-4ded1cd1bbad"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="fontsGeral" x="10" y="0" width="270" height="20" uuid="c19e5368-03de-420a-9142-3b67cc0451f4"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Renda Familiar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="280" y="0" width="263" height="20" uuid="e98166c1-f71d-4ebe-9dba-e147d5194764"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Renda Per Capita]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<pageFooter>
+		<band height="20">
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement style="fontsGeral" x="10" y="0" width="179" height="20" uuid="f841371f-8322-45c4-95ec-7bbeac43f20d"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$V{SOMA_RENDA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.00;¤-#,##0.00">
+				<reportElement style="fontsGeral" x="368" y="0" width="175" height="20" uuid="4231351b-931d-467f-a110-9399e3ad9709"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$V{RENDA_PER_CAPITA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

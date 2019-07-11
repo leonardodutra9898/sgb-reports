@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT * 
+FROM 
+	inscricao_beneficios as ib, inscricao as i, beneficio as b
+WHERE
+	ib.inscricao_id = i.id
+AND
+	ib.beneficios_id = b.id
+AND
+	i.id = $P{inscricao_id}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="i"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="21">
+			<rectangle>
+				<reportElement x="-20" y="0" width="595" height="20" forecolor="#E8E8E8" backcolor="#E8E8E8" uuid="fd6cb6dc-985b-41f9-abb6-6ef2a7ed22b9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="2" width="555" height="19" backcolor="#E8E8E8" uuid="8234117f-d9b2-4770-b1e4-227ac0786f3d"/>
+				<textElement>
+					<font fontName="tahoma" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Benefícios/Auxílios solicitados]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="25" width="555" height="1" forecolor="#B8B8B8" uuid="df7936ed-52ba-41a8-a2df-4d9f21223de6"/>
+			</line>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="4" width="555" height="20" uuid="3f5fb16a-63c0-4dc8-a8d4-b33525a5d194"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

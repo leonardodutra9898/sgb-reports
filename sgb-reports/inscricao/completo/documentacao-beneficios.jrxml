@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nucleoFamiliar" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="inscricao_id" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM 
+			beneficio as b, inscricao_beneficios as ib
+		WHERE 
+			ib.inscricao_id = $P{inscricao_id} AND ib.beneficios_id = b.id]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="beneficio"/>
+	</field>
+	<field name="descricao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="descricao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="beneficio"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="doc"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="36">
+			<rectangle>
+				<reportElement x="-19" y="4" width="219" height="30" backcolor="#4A4A49" uuid="6740a44d-8dae-4e80-8b6c-56ce8a3dbf67"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="2" width="221" height="30" backcolor="#FFDB66" uuid="6de0223e-a429-4f78-918f-4594c2003d0a"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement x="216" y="17" width="445" height="13" uuid="c7c7a036-d0a6-4f25-b402-5a04daefb741"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="9" width="190" height="16" uuid="7111cb3c-c5e5-4e19-9972-4d45ee82b01f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOCUMENTAÇÃO ESPECÍFICA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<subreport>
+				<reportElement x="-20" y="2" width="595" height="34" uuid="6b4caa9e-4962-40e6-82b3-2e6d2f2eba0e"/>
+				<subreportParameter name="inscricao_id">
+					<subreportParameterExpression><![CDATA[$P{inscricao_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="beneficio_id">
+					<subreportParameterExpression><![CDATA[$F{id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["inscricao/completo/documentacao-especifica.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
