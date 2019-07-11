@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="endereco" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="149c17bb-1e07-40a9-ae6b-a7593f6f355f">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="resources\dataAdapter\sgb.xml"/>
+	<style name="fontsGeral" scaleImage="FillFrame" fontName="tahoma" fontSize="12"/>
+	<style name="fontTituloPrincipal" fontName="tahoma" fontSize="18" isBold="true"/>
+	<style name="fontSubTitulo" fontName="tahoma" fontSize="14"/>
+	<style name="fontsGeralEnfatico" scaleImage="FillFrame" fontName="tahoma" fontSize="12" isBold="true"/>
+	<parameter name="aluno_id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT 
+			c.nome as nome_cidade, 
+    		e.nome as nome_estado, 
+    		lo.bairro as nome_bairro, lo.cep, lo.nome_rua, lo.num_casa, lo.referencia, lo.tipo_casa, lo.complemento
+		FROM 
+			aluno as a, logradouro as lo, cidade as c, estado as e
+		WHERE 
+			a.logradouro_moradia_familia_id = lo.id 
+		AND 
+			a.id = $P{aluno_id}
+		AND 
+			lo.cidade_id = c.id
+		AND
+			lo.uf_id = e.id]]>
+	</queryString>
+	<field name="nome_bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="aluno"/>
+	</field>
+	<field name="cep" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cep"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="nome_rua" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_rua"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="num_casa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="num_casa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="referencia" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="referencia"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="tipo_casa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tipo_casa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="complemento" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="complemento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="logradouro"/>
+	</field>
+	<field name="nome_cidade" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_cidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cidade"/>
+	</field>
+	<field name="nome_estado" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome_estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estado"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="33">
+			<rectangle>
+				<reportElement x="-19" y="3" width="249" height="30" backcolor="#4A4A49" uuid="e28b9125-1b65-47ff-9299-ef8bf38fb8d5"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="-20" y="1" width="249" height="30" backcolor="#FFDB66" uuid="9d17e21c-66b1-41a4-ad45-995d5a979bbf"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<image>
+				<reportElement x="250" y="16" width="417" height="4" uuid="ac24f4e8-89fa-447e-ab51-e6076d583183"/>
+				<imageExpression><![CDATA["resources/images/line0.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="8" width="220" height="16" uuid="5ae4a15b-beb6-44b0-b11c-4351f7824acc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ENDEREÇO DA FAMÍLIA DE ORIGEM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="171" splitType="Stretch">
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="60" width="64" height="18" uuid="1f9ff1a2-1e10-4d8f-b967-8f6c3da78c83"/>
+				<text><![CDATA[Cidade/UF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="64" y="60" width="491" height="18" uuid="f7436c21-2d08-4b28-8a00-443a259d2746"/>
+				<textFieldExpression><![CDATA[$F{nome_cidade}.toUpperCase() + "/" + $F{nome_estado}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="30" y="42" width="525" height="18" uuid="0af3e2f2-96ee-4df1-9d67-3964771e542d"/>
+				<textFieldExpression><![CDATA[$F{cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="42" width="30" height="18" uuid="cea2dcfd-ebd1-489b-9484-493f11f7ba68"/>
+				<text><![CDATA[CEP:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="2" width="555" height="20" uuid="0d8dc10b-8815-498a-a2ca-9c26b6cb1977"/>
+				<text><![CDATA[Endereço:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeral" x="0" y="22" width="555" height="20" uuid="cd082eec-baab-4c81-93b2-706499e2a1f1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome_rua}.toUpperCase() + ", " + $F{num_casa} + " - " + $F{nome_bairro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="79" width="555" height="20" uuid="0613bff2-01d8-4818-99f6-a2294067245a"/>
+				<text><![CDATA[Complemento:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="99" width="555" height="19" uuid="132bb6f5-ff59-46be-b9a7-652f3629105c"/>
+				<textFieldExpression><![CDATA[$F{complemento} == null ? "NÃO INFORMADO" : $F{complemento}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="fontsGeral" x="0" y="119" width="555" height="20" uuid="2102e28a-8c1e-4477-8985-5cb9f571e85d"/>
+				<text><![CDATA[Referências:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="fontsGeralEnfatico" x="0" y="139" width="555" height="32" uuid="3db5cbe4-e795-4cb7-9c59-2ce5f02b6399"/>
+				<textFieldExpression><![CDATA[$F{referencia} == null ? "NÃO INFORMADO" : $F{referencia}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
